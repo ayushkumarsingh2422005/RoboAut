@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 const EventsSection = () => {
-  const [selectedEvent, setSelectedEvent] = useState<number | null>(null);
+
   const [activeTab, setActiveTab] = useState('upcoming');
 
   const upcomingEvents = [

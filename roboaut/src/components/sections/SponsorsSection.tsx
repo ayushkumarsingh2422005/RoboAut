@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+
 
 const SponsorsSection = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+
 
   const sponsors = {
     title: [
@@ -115,15 +115,9 @@ const SponsorsSection = () => {
     ]
   };
 
-  const allSponsors = [...sponsors.platinum, ...sponsors.gold, ...sponsors.silver];
 
-  // Auto-scroll carousel
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % Math.ceil(allSponsors.length / 4));
-    }, 3000);
-    return () => clearInterval(timer);
-  }, [allSponsors.length]);
+
+
 
   const getTierColor = (tier: string) => {
     switch (tier) {

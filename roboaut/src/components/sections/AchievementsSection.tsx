@@ -12,12 +12,7 @@ const AchievementsSection = () => {
   });
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  const finalCounts = {
-    projects: 25,
-    members: 150,
-    awards: 12,
-    workshops: 30
-  };
+
 
   const achievements = [
     {
@@ -79,6 +74,13 @@ const AchievementsSection = () => {
   // Animated counters
   useEffect(() => {
     if (isVisible) {
+      const finalCounts = {
+        projects: 25,
+        members: 150,
+        awards: 12,
+        workshops: 30
+      };
+      
       const duration = 2000; // 2 seconds
       const steps = 60;
       const stepDuration = duration / steps;
@@ -167,7 +169,7 @@ const AchievementsSection = () => {
 
         {/* Achievement Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {achievements.map((achievement, index) => (
+          {achievements.map((achievement) => (
             <div key={achievement.id} className="group relative">
               <div className="relative glass backdrop-blur-lg rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
                 {/* Background Gradient */}

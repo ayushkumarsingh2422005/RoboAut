@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -83,7 +84,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <h1 className="text-2xl font-orbitron font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent neon-text flex items-center gap-2">
-              <img src="/logo.png" alt="RoboAut" className="w-10 h-10" />RoboAut
+              <Image src="/logo.png" alt="RoboAut" width={40} height={40} className="w-10 h-10" />RoboAut
             </h1>
           </div>
 

@@ -215,31 +215,31 @@ const ResourcesSection = () => {
 
                   {/* Resource Metadata */}
                   <div className="space-y-2 mb-4 text-sm text-gray-400 font-exo2">
-                    {resource.duration && (
+                    {'duration' in resource && (
                       <div className="flex items-center space-x-2">
                         <span className="text-blue-400">⏱️</span>
                         <span>Duration: {resource.duration}</span>
                       </div>
                     )}
-                    {resource.pages && (
+                    {'pages' in resource && (
                       <div className="flex items-center space-x-2">
                         <span className="text-blue-400">📄</span>
                         <span>Pages: {resource.pages}</span>
                       </div>
                     )}
-                    {resource.language && (
+                    {'language' in resource && (
                       <div className="flex items-center space-x-2">
                         <span className="text-blue-400">💻</span>
                         <span>Language: {resource.language}</span>
                       </div>
                     )}
-                    {resource.platform && (
+                    {'platform' in resource && (
                       <div className="flex items-center space-x-2">
                         <span className="text-blue-400">🖥️</span>
                         <span>Platform: {resource.platform}</span>
                       </div>
                     )}
-                    {resource.format && (
+                    {'format' in resource && (
                       <div className="flex items-center space-x-2">
                         <span className="text-blue-400">📋</span>
                         <span>Format: {resource.format}</span>

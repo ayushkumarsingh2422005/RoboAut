@@ -181,7 +181,7 @@ const TeamSection = () => {
                   <div className={`absolute inset-0 bg-black/80 flex items-center justify-center space-x-4 transition-opacity duration-300 ${
                     selectedMember === member.id ? 'opacity-100' : 'opacity-0'
                   }`}>
-                    {Object.entries(member.social).map(([platform, handle]) => (
+                    {Object.entries(member.social).map(([platform]) => (
                       <button key={platform} className="p-2 bg-white/20 rounded-lg hover:bg-white/30 transition-colors duration-300">
                         <span className="text-white text-sm">
                           {platform === 'email' && '📧'}

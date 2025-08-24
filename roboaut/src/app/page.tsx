@@ -10,12 +10,7 @@ import ResourcesSection from '../components/sections/ResourcesSection';
 import SponsorsSection from '../components/sections/SponsorsSection';
 import Footer from '../components/Footer';
 
-// Temporary placeholder for 3D model
-const SplinePlaceholder = () => (
-  <div className="w-full h-full bg-gradient-to-br from-blue-900/20 to-purple-900/20 animate-pulse rounded-lg flex items-center justify-center">
-    <div className="text-blue-400 text-2xl font-orbitron">3D Model Loading...</div>
-  </div>
-);
+
 
 export default function Home() {
 
