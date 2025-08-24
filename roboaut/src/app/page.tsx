@@ -2,6 +2,13 @@
 
 import Spline from "@splinetool/react-spline";
 import Navbar from '../components/Navbar';
+import ProjectsSection from '../components/sections/ProjectsSection';
+import AchievementsSection from '../components/sections/AchievementsSection';
+import EventsSection from '../components/sections/EventsSection';
+import TeamSection from '../components/sections/TeamSection';
+import ResourcesSection from '../components/sections/ResourcesSection';
+import SponsorsSection from '../components/sections/SponsorsSection';
+import Footer from '../components/Footer';
 
 // Temporary placeholder for 3D model
 const SplinePlaceholder = () => (
@@ -62,7 +69,7 @@ export default function Home() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 flex min-h-screen pt-16">
+      <div className="relative z-10 flex min-h-screen pt-20">
         {/* Left Side - Hero Content */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center px-8 lg:px-16 xl:px-24">
           <div className="space-y-8">
@@ -175,6 +182,15 @@ export default function Home() {
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-scan" />
       </div>
     </div>
+    
+    {/* Additional Sections */}
+    <ProjectsSection />
+    <AchievementsSection />
+    <EventsSection />
+    <TeamSection />
+    <ResourcesSection />
+    <SponsorsSection />
+    <Footer />
     </>
   );
 }

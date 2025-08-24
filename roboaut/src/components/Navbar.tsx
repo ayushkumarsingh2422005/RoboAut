@@ -9,6 +9,8 @@ const Navbar = () => {
     left?: number;
     width?: number;
   }>({});
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const navRef = useRef<HTMLDivElement>(null);
 
   const navItems = [
@@ -49,14 +51,39 @@ const Navbar = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [activeItem]);
 
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass backdrop-blur-md border-b border-blue-500/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  // Handle scroll behavior
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Show navbar when at top of page
+      if (currentScrollY < 10) {
+        setIsVisible(true);
+      }
+      // Hide when scrolling down, show when scrolling up
+      else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
+      return (
+      <nav className={`fixed left-4 right-4 md:left-8 md:right-8 lg:left-12 lg:right-12 z-50 glass backdrop-blur-md rounded-2xl border border-blue-500/20 shadow-lg shadow-blue-500/10 hover:shadow-blue-500/20 transition-all duration-500 ease-out ${
+        isVisible ? 'top-4 opacity-100 translate-y-0' : '-top-20 opacity-0 -translate-y-full'
+      }`}>
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-orbitron font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent neon-text">
-              RoboAut
+            <h1 className="text-2xl font-orbitron font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent neon-text flex items-center gap-2">
+              <img src="/logo.png" alt="RoboAut" className="w-10 h-10" />RoboAut
             </h1>
           </div>
 
@@ -65,7 +92,7 @@ const Navbar = () => {
             <div className="ml-10 relative" ref={navRef}>
               {/* Moving Rectangle Indicator */}
               <div
-                className="absolute top-1/2 transform -translate-y-1/2 h-10 bg-gradient-to-r from-blue-500/20 via-purple-500/30 to-cyan-500/20 backdrop-blur-sm border border-blue-400/30 rounded-lg transition-all duration-500 ease-out"
+                className="absolute top-1/2 transform -translate-y-1/2 h-10 bg-gradient-to-r from-blue-500/20 via-purple-500/30 to-cyan-500/20 backdrop-blur-sm border border-blue-400/30 rounded-xl transition-all duration-500 ease-out"
                 style={{
                   left: indicatorStyle.left,
                   width: indicatorStyle.width,
