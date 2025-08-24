@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "forms",
+  "info": {
+    "singularName": "form",
+    "pluralName": "forms",
+    "displayName": "Form"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ParticipantName": {
+      "type": "string",
+      "required": true
+    },
+    "RegistrationNumber": {
+      "type": "string",
+      "required": true
+    },
+    "event": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::event.event"
+    },
+    "Email": {
+      "type": "email",
+      "required": true
+    },
+    "Contact": {
+      "type": "biginteger",
+      "required": true
+    },
+    "Resume": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files"
+      ]
+    }
+  }
+}

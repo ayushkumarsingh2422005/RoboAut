@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pors",
+  "info": {
+    "singularName": "por",
+    "pluralName": "pors",
+    "displayName": "POR"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Designation": {
+      "type": "string",
+      "required": true
+    },
+    "ProfileImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Email": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "Phone": {
+      "type": "biginteger",
+      "unique": true,
+      "min": "1000000000"
+    },
+    "Instagram": {
+      "type": "string",
+      "required": true
+    },
+    "LinkedIn": {
+      "type": "string",
+      "required": true
+    },
+    "Github": {
+      "type": "string"
+    }
+  }
+}
