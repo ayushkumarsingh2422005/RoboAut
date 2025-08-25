@@ -14,29 +14,31 @@ import Footer from '../components/Footer';
 
 export default function Home() {
 
-  // Pre-defined particle positions to avoid hydration mismatch
-  const particlePositions = [
-    { left: '10%', top: '20%', delay: '0s', duration: '3s' },
-    { left: '25%', top: '15%', delay: '0.5s', duration: '4s' },
-    { left: '40%', top: '30%', delay: '1s', duration: '3.5s' },
-    { left: '55%', top: '25%', delay: '1.5s', duration: '4.5s' },
-    { left: '70%', top: '35%', delay: '2s', duration: '3s' },
-    { left: '85%', top: '20%', delay: '2.5s', duration: '4s' },
-    { left: '15%', top: '60%', delay: '0.3s', duration: '3.5s' },
-    { left: '30%', top: '70%', delay: '0.8s', duration: '4.2s' },
-    { left: '45%', top: '65%', delay: '1.3s', duration: '3.8s' },
-    { left: '60%', top: '75%', delay: '1.8s', duration: '4.1s' },
-    { left: '75%', top: '60%', delay: '2.3s', duration: '3.3s' },
-    { left: '90%', top: '70%', delay: '2.8s', duration: '4.3s' },
-    { left: '20%', top: '85%', delay: '0.2s', duration: '3.7s' },
-    { left: '35%', top: '90%', delay: '0.7s', duration: '4.4s' },
-    { left: '50%', top: '85%', delay: '1.2s', duration: '3.9s' },
-    { left: '65%', top: '90%', delay: '1.7s', duration: '4.6s' },
-    { left: '80%', top: '85%', delay: '2.2s', duration: '3.4s' },
-    { left: '95%', top: '90%', delay: '2.7s', duration: '4.7s' },
-    { left: '5%', top: '50%', delay: '0.1s', duration: '3.6s' },
-    { left: '95%', top: '50%', delay: '0.6s', duration: '4.8s' }
-  ];
+  // Generate randomized particle positions for dynamic motion
+  const generateRandomParticles = () => {
+    const particles = [];
+    for (let i = 0; i < 25; i++) {
+      // Add some randomness to positions while keeping them spread out
+      const baseLeft = (i % 5) * 20 + Math.random() * 15;
+      const baseTop = Math.floor(i / 5) * 20 + Math.random() * 15;
+      
+      particles.push({
+        left: `${Math.min(Math.max(baseLeft, 2), 95)}%`,
+        top: `${Math.min(Math.max(baseTop, 5), 90)}%`,
+        delay: `${Math.random() * 3}s`,
+        duration: `${3 + Math.random() * 3}s`,
+        size: Math.random() * 3 + 1, // Random size between 1-4px
+        opacity: 0.3 + Math.random() * 0.7, // Random opacity between 0.3-1
+        moveX: (Math.random() - 0.5) * 100, // Random horizontal movement
+        moveY: (Math.random() - 0.5) * 100, // Random vertical movement
+        animationType: Math.floor(Math.random() * 5), // 0: pulse, 1: float, 2: glow, 3: random-float, 4: drift
+        color: Math.floor(Math.random() * 4) // 0: blue, 1: purple, 2: cyan, 3: white
+      });
+    }
+    return particles;
+  };
+
+  const particlePositions = generateRandomParticles();
 
   return (
     <>
@@ -48,19 +50,50 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(139,92,246,0.1),transparent_50%)]" />
 
-        {/* Animated particles with fixed positions */}
-        {particlePositions.map((particle, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-blue-400 rounded-full animate-pulse"
-            style={{
-              left: particle.left,
-              top: particle.top,
-              animationDelay: particle.delay,
-              animationDuration: particle.duration
-            }}
-          />
-        ))}
+        {/* Animated particles with random positions and motion */}
+        {particlePositions.map((particle, i) => {
+          // Determine animation class based on type
+          const getAnimationClass = (type: number) => {
+            switch(type) {
+              case 0: return 'animate-pulse';
+              case 1: return 'animate-float';
+              case 2: return 'animate-glow';
+              case 3: return 'animate-random-float';
+              case 4: return 'animate-drift';
+              default: return 'animate-pulse';
+            }
+          };
+
+          // Determine color class based on color type
+          const getColorClass = (colorType: number) => {
+            switch(colorType) {
+              case 0: return 'bg-blue-400';
+              case 1: return 'bg-purple-400';
+              case 2: return 'bg-cyan-400';
+              case 3: return 'bg-white';
+              default: return 'bg-blue-400';
+            }
+          };
+
+          return (
+            <div
+              key={i}
+              className={`absolute rounded-full ${getColorClass(particle.color)} ${getAnimationClass(particle.animationType)}`}
+              style={{
+                left: particle.left,
+                top: particle.top,
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+                opacity: particle.opacity,
+                animationDelay: particle.delay,
+                animationDuration: particle.duration,
+                transform: `translate(${particle.moveX * 0.3}px, ${particle.moveY * 0.3}px)`,
+                transition: 'transform 8s ease-in-out infinite',
+                filter: `blur(${Math.random() * 0.5}px)` // Add slight blur for depth
+              }}
+            />
+          );
+        })}
       </div>
 
       {/* Main Content */}
@@ -169,8 +202,8 @@ export default function Home() {
       </div>
 
       {/* Glassmorphism Cards */}
-      <div className="absolute top-1/4 right-1/4 w-48 h-32 glass rounded-lg animate-float opacity-60" />
-      <div className="absolute bottom-1/4 left-1/4 w-32 h-48 glass rounded-lg animate-float opacity-60" style={{ animationDelay: '2s' }} />
+      {/* <div className="absolute top-1/4 right-1/4 w-48 h-32 glass rounded-lg animate-float opacity-60" />
+      <div className="absolute bottom-1/4 left-1/4 w-32 h-48 glass rounded-lg animate-float opacity-60" style={{ animationDelay: '2s' }} /> */}
 
       {/* Scanning Line Effect */}
       <div className="absolute inset-0 pointer-events-none">

@@ -24,6 +24,15 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
+/* Font face declaration */
+@font-face {
+  font-family: 'SF Transrobotics';
+  src: url('/font/sf-transrobotics.regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Font classes */
 .font-orbitron {
   font-family: var(--font-orbitron), 'Orbitron', monospace;
@@ -31,6 +40,10 @@ body {
 
 .font-exo2 {
   font-family: var(--font-exo2), 'Exo 2', sans-serif;
+}
+
+.font-sf-transrobotics {
+  font-family: 'SF Transrobotics', monospace, Arial, sans-serif;
 }
 
 /* Custom scrollbar */
@@ -114,6 +127,33 @@ body {
   }
 }
 
+@keyframes random-float {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  25% { 
+    transform: translateY(-15px) translateX(10px) rotate(90deg);
+  }
+  50% { 
+    transform: translateY(-30px) translateX(-5px) rotate(180deg);
+  }
+  75% { 
+    transform: translateY(-10px) translateX(-15px) rotate(270deg);
+  }
+}
+
+@keyframes drift {
+  0%, 100% { 
+    transform: translate(0px, 0px);
+  }
+  33% { 
+    transform: translate(20px, -10px);
+  }
+  66% { 
+    transform: translate(-15px, 15px);
+  }
+}
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
@@ -140,6 +180,14 @@ body {
 
 .animate-scan {
   animation: scan 8s linear infinite;
+}
+
+.animate-random-float {
+  animation: random-float 8s ease-in-out infinite;
+}
+
+.animate-drift {
+  animation: drift 6s ease-in-out infinite;
 }
 
 /* Glassmorphism effect */
