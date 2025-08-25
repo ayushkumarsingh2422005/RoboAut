@@ -466,33 +466,6 @@ export interface ApiContactFormContactForm extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiContactContact extends Struct.CollectionTypeSchema {
-  collectionName: 'contacts';
-  info: {
-    displayName: 'ContactUs';
-    pluralName: 'contacts';
-    singularName: 'contact';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::contact.contact'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiEventEvent extends Struct.CollectionTypeSchema {
   collectionName: 'events';
   info: {
@@ -1241,7 +1214,6 @@ declare module '@strapi/strapi' {
       'api::about.about': ApiAboutAbout;
       'api::achievement.achievement': ApiAchievementAchievement;
       'api::contact-form.contact-form': ApiContactFormContactForm;
-      'api::contact.contact': ApiContactContact;
       'api::event.event': ApiEventEvent;
       'api::form.form': ApiFormForm;
       'api::global.global': ApiGlobalGlobal;

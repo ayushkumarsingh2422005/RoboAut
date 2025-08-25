@@ -16,11 +16,12 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Events', href: '#events' },
-    { name: 'Team', href: '#team' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Events', href: '/reso' },
+    { name: 'Team', href: '/team' },
+    { name: 'Achivement', href: '/achivement' },
+    { name: 'Resources', href: '/resources' },
+    { name: 'Sponsors', href: '/sponsors' },
   ];
 
   const handleItemClick = (itemName: string) => {
@@ -91,7 +92,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <div className="ml-10 relative" ref={navRef}>
               {/* Moving Rectangle Indicator */}
               <div
@@ -103,7 +104,7 @@ const Navbar = () => {
                 }}
               />
 
-              <div className="flex items-baseline space-x-8 relative z-10">
+              <div className="flex items-baseline space-x-4 relative z-10">
                 {navItems.map((item) => (
                   <a
                     key={item.name}
@@ -116,21 +117,6 @@ const Navbar = () => {
                       }`}
                   >
                     {item.name}
-
-                    {/* Floating particles for active item */}
-                    {/* {activeItem === item.name && (
-                      <>
-                        <div className="absolute -top-1 left-1/2 transform -translate-x-1/2">
-                          <div className="w-1 h-1 bg-blue-400 rounded-full animate-ping" />
-                        </div>
-                        <div className="absolute -bottom-1 left-1/4">
-                          <div className="w-0.5 h-0.5 bg-purple-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
-                        </div>
-                        <div className="absolute -bottom-1 right-1/4">
-                          <div className="w-0.5 h-0.5 bg-cyan-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-                        </div>
-                      </>
-                    )} */}
                   </a>
                 ))}
               </div>
@@ -138,19 +124,19 @@ const Navbar = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <button
               className="relative px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-exo2 font-semibold text-sm transition-all duration-300 hover:from-blue-500 hover:to-purple-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]"
               style={{
                 clipPath: "polygon(0px 0px, 90% 0px, 100% 25%, 100% 100%, 10% 100%, 0px 75%)"
               }}
             >
-              <span className="relative z-10">Join Us</span>
+              <span className="relative z-10">Reach Us</span>
             </button>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="relative w-8 h-8 text-gray-400 hover:text-blue-400 focus:outline-none transition-colors duration-300"
@@ -177,7 +163,7 @@ const Navbar = () => {
 
       {/* Mobile Navigation Menu */}
       <div
-        className={`md:hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        className={`lg:hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
           } overflow-hidden`}
       >
         <div className="px-2 pt-2 pb-3 space-y-1 glass backdrop-blur-lg border-t border-blue-500/20">
