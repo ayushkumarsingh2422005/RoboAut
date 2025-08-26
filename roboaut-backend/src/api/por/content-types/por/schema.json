@@ -34,8 +34,7 @@
     },
     "Phone": {
       "type": "biginteger",
-      "unique": true,
-      "min": "1000000000"
+      "unique": true
     },
     "Instagram": {
       "type": "string",
