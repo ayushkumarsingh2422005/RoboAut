@@ -30,7 +30,7 @@
       ]
     },
     "Date": {
-      "type": "datetime",
+      "type": "date",
       "required": true
     },
     "Thumbnail": {
