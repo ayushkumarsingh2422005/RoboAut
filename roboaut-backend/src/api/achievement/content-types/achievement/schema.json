@@ -37,10 +37,8 @@
       ]
     },
     "Year": {
-      "type": "biginteger",
-      "required": true,
-      "min": "1000",
-      "max": "9999"
+      "type": "integer",
+      "required": true
     }
   }
 }
