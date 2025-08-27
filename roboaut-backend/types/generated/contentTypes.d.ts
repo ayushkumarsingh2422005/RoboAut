@@ -499,6 +499,34 @@ export interface ApiFormForm extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiGalleryGallery extends Struct.CollectionTypeSchema {
+  collectionName: 'galleries';
+  info: {
+    displayName: 'Gallery';
+    pluralName: 'galleries';
+    singularName: 'gallery';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::gallery.gallery'
+    > &
+      Schema.Attribute.Private;
+    Photos: Schema.Attribute.Media<'images', true> & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPorPor extends Struct.CollectionTypeSchema {
   collectionName: 'pors';
   info: {
@@ -1148,6 +1176,7 @@ declare module '@strapi/strapi' {
       'api::contact-form.contact-form': ApiContactFormContactForm;
       'api::event.event': ApiEventEvent;
       'api::form.form': ApiFormForm;
+      'api::gallery.gallery': ApiGalleryGallery;
       'api::por.por': ApiPorPor;
       'api::project.project': ApiProjectProject;
       'api::resource.resource': ApiResourceResource;
