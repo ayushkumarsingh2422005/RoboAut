@@ -581,18 +581,19 @@ export interface ApiResourceResource extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Access: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Description: Schema.Attribute.Text & Schema.Attribute.Required;
+    Links: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::resource.resource'
     > &
       Schema.Attribute.Private;
-    Photo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    pdf: Schema.Attribute.Media<'files', true>;
+    Photo: Schema.Attribute.Media<'images'>;
     publishedAt: Schema.Attribute.DateTime;
     Title: Schema.Attribute.String & Schema.Attribute.Required;
     Type: Schema.Attribute.Enumeration<

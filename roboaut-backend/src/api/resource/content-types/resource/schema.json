@@ -22,14 +22,10 @@
     "Photo": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images"
       ]
-    },
-    "Access": {
-      "type": "string",
-      "required": true
     },
     "Type": {
       "type": "enumeration",
@@ -38,6 +34,16 @@
         "Learning Resource",
         "workshop Material "
       ]
+    },
+    "pdf": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "Links": {
+      "type": "string"
     }
   }
 }
