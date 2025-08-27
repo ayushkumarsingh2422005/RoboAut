@@ -1,5 +1,7 @@
 'use client';
 
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
 import { useState, useEffect, useRef } from 'react';
 
 const AchievementsSection = () => {
@@ -106,7 +108,9 @@ const AchievementsSection = () => {
   }, [isVisible]);
 
   return (
-    <section id="achievements" ref={sectionRef} className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-900">
+    <>
+    <Navbar />
+    <section id="achievements" ref={sectionRef} className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-900 pt-40">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(139,92,246,0.1),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(59,130,246,0.1),transparent_50%)]" />
@@ -235,6 +239,8 @@ const AchievementsSection = () => {
         </div> */}
       </div>
     </section>
+    <Footer />
+    </>
   );
 };
 

@@ -1,5 +1,7 @@
 'use client';
 
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
 import { useState } from 'react';
 
 const EventsSection = () => {
@@ -103,7 +105,9 @@ const EventsSection = () => {
   };
 
   return (
-    <section id="events" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <>
+    <Navbar />
+    <section id="events" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden pt-40">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-green-900/10 via-blue-900/10 to-purple-900/10" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(34,197,94,0.1),transparent_50%)]" />
@@ -311,29 +315,11 @@ const EventsSection = () => {
           </div>
         )}
 
-        {/* Newsletter Signup */}
-        {/* <div className="mt-16 text-center">
-          <div className="glass backdrop-blur-lg rounded-2xl p-8 border border-green-500/20 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-orbitron font-bold text-white mb-4">
-              Stay Updated with Latest Events
-            </h3>
-            <p className="text-gray-300 font-exo2 mb-6">
-              Subscribe to our newsletter and never miss an exciting robotics event or workshop.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input 
-                type="email" 
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-black/50 border border-green-500/30 rounded-lg text-white placeholder-gray-400 font-exo2 focus:border-green-400 focus:outline-none transition-colors duration-300"
-              />
-              <button className="px-6 py-3 bg-gradient-to-r from-green-600 to-blue-600 text-white font-exo2 font-semibold rounded-lg hover:from-green-500 hover:to-blue-500 transition-all duration-300 hover:scale-105">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div> */}
+        
       </div>
     </section>
+    <Footer />
+    </>
   );
 };
 

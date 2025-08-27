@@ -1,5 +1,7 @@
 'use client';
 
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
 import { useState } from 'react';
 
 const TeamSection = () => {
@@ -131,7 +133,9 @@ const TeamSection = () => {
   ];
 
   return (
-    <section id="team" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <>
+    <Navbar />
+    <section id="team" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden pt-40">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/10 via-purple-900/10 to-pink-900/10" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(99,102,241,0.1),transparent_50%)]" />
@@ -301,6 +305,8 @@ const TeamSection = () => {
         </div> */}
       </div>
     </section>
+    <Footer />
+    </>
   );
 };
 

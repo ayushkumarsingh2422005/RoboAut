@@ -1,11 +1,31 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import Image from 'next/image';
 
 const Navbar = () => {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState('Home');
+  
+  const navItems = [
+    { name: 'Home', href: '/' },
+    { name: 'Projects', href: '/projects' },
+    { name: 'Events', href: '/events' },
+    { name: 'Team', href: '/team' },
+    { name: 'Achievements', href: '/achievements' },
+    { name: 'Resources', href: '/resources' },
+    { name: 'Sponsors', href: '/sponsors' },
+  ];
+  
+  // Initialize activeItem based on current pathname
+  const getInitialActiveItem = () => {
+    const currentNavItem = navItems.find(item => item.href === pathname);
+    return currentNavItem ? currentNavItem.name : 'Home';
+  };
+  
+  const [activeItem, setActiveItem] = useState(getInitialActiveItem());
   const [indicatorStyle, setIndicatorStyle] = useState<{
     left?: number;
     width?: number;
@@ -13,16 +33,6 @@ const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const navRef = useRef<HTMLDivElement>(null);
-
-  const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Events', href: '/reso' },
-    { name: 'Team', href: '/team' },
-    { name: 'Achivement', href: '/achivement' },
-    { name: 'Resources', href: '/resources' },
-    { name: 'Sponsors', href: '/sponsors' },
-  ];
 
   const handleItemClick = (itemName: string) => {
     setActiveItem(itemName);
@@ -43,8 +53,26 @@ const Navbar = () => {
     }
   };
 
+  // Set active item based on current pathname
+  useEffect(() => {
+    const currentNavItem = navItems.find(item => item.href === pathname);
+    if (currentNavItem) {
+      setActiveItem(currentNavItem.name);
+    }
+  }, [pathname]);
+
+  // Update indicator when activeItem changes or on initial load
   useEffect(() => {
     updateIndicator(activeItem);
+  }, [activeItem]);
+
+  // Initial positioning on mount
+  useEffect(() => {
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      updateIndicator(activeItem);
+    }, 100);
+    return () => clearTimeout(timer);
   }, [activeItem]);
 
   useEffect(() => {
@@ -106,7 +134,7 @@ const Navbar = () => {
 
               <div className="flex items-baseline space-x-4 relative z-10">
                 {navItems.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.href}
                     data-nav={item.name}
@@ -117,7 +145,7 @@ const Navbar = () => {
                       }`}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -125,14 +153,16 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <button
-              className="relative px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-exo2 font-semibold text-sm transition-all duration-300 hover:from-blue-500 hover:to-purple-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]"
-              style={{
-                clipPath: "polygon(0px 0px, 90% 0px, 100% 25%, 100% 100%, 10% 100%, 0px 75%)"
-              }}
-            >
-              <span className="relative z-10">Reach Us</span>
-            </button>
+            <Link href="/reach-us">
+              <button
+                className="relative px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-exo2 font-semibold text-sm transition-all duration-300 hover:from-blue-500 hover:to-purple-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]"
+                style={{
+                  clipPath: "polygon(0px 0px, 90% 0px, 100% 25%, 100% 100%, 10% 100%, 0px 75%)"
+                }}
+              >
+                <span className="relative z-10">Reach Us</span>
+              </button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -168,7 +198,7 @@ const Navbar = () => {
       >
         <div className="px-2 pt-2 pb-3 space-y-1 glass backdrop-blur-lg border-t border-blue-500/20">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.name}
               href={item.href}
               onClick={() => handleItemClick(item.name)}
@@ -185,19 +215,21 @@ const Navbar = () => {
                   <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
                 </div>
               )}
-            </a>
+            </Link>
           ))}
 
           {/* Mobile CTA Button */}
           <div className="px-3 py-2">
-            <button
-              className="w-full relative px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-exo2 font-semibold text-sm transition-all duration-300 hover:from-blue-500 hover:to-purple-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]"
-              style={{
-                clipPath: "polygon(0px 0px, 90% 0px, 100% 25%, 100% 100%, 10% 100%, 0px 75%)"
-              }}
-            >
-              <span className="relative z-10">Join Us</span>
-            </button>
+            <Link href="/reach-us">
+              <button
+                className="w-full relative px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-exo2 font-semibold text-sm transition-all duration-300 hover:from-blue-500 hover:to-purple-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]"
+                style={{
+                  clipPath: "polygon(0px 0px, 90% 0px, 100% 25%, 100% 100%, 10% 100%, 0px 75%)"
+                }}
+              >
+                <span className="relative z-10">Reach Us</span>
+              </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -215,3 +247,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

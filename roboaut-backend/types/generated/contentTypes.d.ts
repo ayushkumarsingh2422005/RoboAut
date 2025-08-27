@@ -387,7 +387,6 @@ export interface ApiAchievementAchievement extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Date: Schema.Attribute.Date & Schema.Attribute.Required;
     Description: Schema.Attribute.RichText & Schema.Attribute.Required;
     Images: Schema.Attribute.Media<'images', true>;
     Link: Schema.Attribute.String;
@@ -403,6 +402,15 @@ export interface ApiAchievementAchievement extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Year: Schema.Attribute.BigInteger &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: '9999';
+          min: '1000';
+        },
+        string
+      >;
   };
 }
 

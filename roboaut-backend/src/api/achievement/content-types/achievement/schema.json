@@ -15,10 +15,6 @@
       "type": "string",
       "required": true
     },
-    "Date": {
-      "type": "date",
-      "required": true
-    },
     "Description": {
       "type": "richtext",
       "required": true
@@ -39,6 +35,12 @@
       "allowedTypes": [
         "files"
       ]
+    },
+    "Year": {
+      "type": "biginteger",
+      "required": true,
+      "min": "1000",
+      "max": "9999"
     }
   }
 }

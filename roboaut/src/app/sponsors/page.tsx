@@ -1,6 +1,7 @@
 'use client';
 
-
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
 
 const SponsorsSection = () => {
 
@@ -179,7 +180,9 @@ const SponsorsSection = () => {
   ];
 
   return (
-    <section id="sponsors" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <>
+    <Navbar />
+    <section id="sponsors" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden pt-40">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-yellow-900/10 via-orange-900/10 to-red-900/10" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_40%,rgba(251,191,36,0.1),transparent_50%)]" />
@@ -351,6 +354,8 @@ const SponsorsSection = () => {
         </div>
       </div>
     </section>
+    <Footer />
+    </>
   );
 };
 
