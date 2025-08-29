@@ -541,6 +541,7 @@ export interface ApiPorPor extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Description: Schema.Attribute.String & Schema.Attribute.Required;
     Designation: Schema.Attribute.String & Schema.Attribute.Required;
     Email: Schema.Attribute.Email &
       Schema.Attribute.Required &
