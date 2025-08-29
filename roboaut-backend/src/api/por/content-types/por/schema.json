@@ -50,6 +50,10 @@
     "Description": {
       "type": "string",
       "required": true
+    },
+    "Rank": {
+      "type": "integer",
+      "required": true
     }
   }
 }

@@ -556,6 +556,7 @@ export interface ApiPorPor extends Struct.CollectionTypeSchema {
     Phone: Schema.Attribute.BigInteger & Schema.Attribute.Unique;
     ProfileImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    Rank: Schema.Attribute.Integer & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
