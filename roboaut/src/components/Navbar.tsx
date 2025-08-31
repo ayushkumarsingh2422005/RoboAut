@@ -110,14 +110,14 @@ const Navbar = () => {
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <Link href="/" className="flex-shrink-0">
             <h1 className="text-2xl font-sf-transrobotics font-medium bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent flex items-center gap-2">
               <Image src="/logo.png" alt="RoboAut" width={40} height={40} className="w-10 h-10" />
               <span className='shadow-none'>
                 <span className='text-[#004d99]'>Robo</span><span className='text-[#00bfff]'>Aut</span>
               </span>
             </h1>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:block">
