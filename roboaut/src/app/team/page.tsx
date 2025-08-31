@@ -132,7 +132,7 @@ const TeamSection = () => {
         setIsLoading(true);
         setError(null);
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/pors?populate[ProfileImage][fields]=url`
+          `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/pors?populate[ProfileImage][fields]=url&sort=Rank:asc`
         );
         if (!response.ok) {
           throw new Error('Failed to fetch team members');

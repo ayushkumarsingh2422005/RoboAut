@@ -53,9 +53,12 @@ const sendFormEmail = async (name, registrationNumber, email, phone, event) => {
             
             .email-container {
                 max-width: 600px;
-                margin: 0 auto;
+                margin: 20px auto;
                 background-color: #ffffff;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+                border-radius: 20px;
+                overflow: hidden;
+                border: 1px solid #e9ecef;
             }
             
             .header {
@@ -63,12 +66,28 @@ const sendFormEmail = async (name, registrationNumber, email, phone, event) => {
                 color: white;
                 padding: 30px 20px;
                 text-align: center;
+                position: relative;
             }
             
-            .logo {
+            .logo-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 15px;
+                margin-bottom: 10px;
+            }
+            
+            .logo-image {
+                width: 48px;
+                height: 48px;
+                border-radius: 8px;
+                background-color: rgba(255, 255, 255, 0.1);
+                padding: 4px;
+            }
+            
+            .logo-text {
                 font-size: 28px;
                 font-weight: bold;
-                margin-bottom: 10px;
                 letter-spacing: 2px;
             }
             
@@ -97,91 +116,180 @@ const sendFormEmail = async (name, registrationNumber, email, phone, event) => {
             
             .registration-details {
                 background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-                border-radius: 12px;
-                padding: 25px;
+                border-radius: 16px;
+                padding: 30px;
                 margin: 30px 0;
                 border-left: 5px solid #667eea;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .registration-details::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100px;
+                height: 100px;
+                background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+                border-radius: 50%;
+                transform: translate(30px, -30px);
             }
             
             .details-title {
-                font-size: 20px;
+                font-size: 22px;
                 color: #2c3e50;
-                margin-bottom: 20px;
-                font-weight: 600;
+                margin-bottom: 25px;
+                font-weight: 700;
                 text-align: center;
+                position: relative;
+                z-index: 1;
             }
             
             .detail-row {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 12px 0;
-                border-bottom: 1px solid #dee2e6;
+                padding: 15px 20px;
+                margin-bottom: 8px;
+                background: rgba(255, 255, 255, 0.7);
+                border-radius: 10px;
+                transition: all 0.3s ease;
+                position: relative;
+                z-index: 1;
+            }
+            
+            .detail-row:hover {
+                background: rgba(255, 255, 255, 0.9);
+                transform: translateY(-1px);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             }
             
             .detail-row:last-child {
-                border-bottom: none;
+                margin-bottom: 0;
             }
             
             .detail-label {
                 font-weight: 600;
                 color: #495057;
-                font-size: 14px;
+                font-size: 13px;
                 text-transform: uppercase;
-                letter-spacing: 0.5px;
+                letter-spacing: 0.8px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .detail-label::before {
+                content: '▸';
+                color: #667eea;
+                font-weight: bold;
             }
             
             .detail-value {
                 color: #2c3e50;
-                font-weight: 500;
+                font-weight: 600;
                 word-break: break-word;
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
             }
             
             .important-note {
-                background-color: #fff3cd;
-                border: 1px solid #ffeaa7;
-                border-radius: 8px;
-                padding: 20px;
+                background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+                border: 2px solid #f39c12;
+                border-radius: 12px;
+                padding: 25px;
                 margin: 25px 0;
+                position: relative;
+                overflow: hidden;
+                box-shadow: 0 4px 12px rgba(243, 156, 18, 0.2);
+            }
+            
+            .important-note::before {
+                content: '⚠️';
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                font-size: 40px;
+                opacity: 0.3;
+                transform: rotate(15deg);
             }
             
             .note-title {
-                font-weight: 600;
-                color: #856404;
-                margin-bottom: 10px;
-                font-size: 16px;
+                font-weight: 700;
+                color: #b7791f;
+                margin-bottom: 12px;
+                font-size: 17px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
             }
             
             .note-text {
                 color: #856404;
-                font-size: 14px;
-                line-height: 1.6;
+                font-size: 15px;
+                line-height: 1.7;
+                position: relative;
+                z-index: 1;
             }
             
             .next-steps {
-                background-color: #d1ecf1;
-                border: 1px solid #bee5eb;
-                border-radius: 8px;
-                padding: 20px;
+                background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+                border: 2px solid #2196f3;
+                border-radius: 12px;
+                padding: 25px;
                 margin: 25px 0;
+                position: relative;
+                overflow: hidden;
+                box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
+            }
+            
+            .next-steps::before {
+                content: '🚀';
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                font-size: 40px;
+                opacity: 0.3;
+                transform: rotate(15deg);
             }
             
             .steps-title {
-                font-weight: 600;
-                color: #0c5460;
-                margin-bottom: 15px;
-                font-size: 16px;
+                font-weight: 700;
+                color: #1565c0;
+                margin-bottom: 18px;
+                font-size: 17px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                position: relative;
+                z-index: 1;
             }
             
             .steps-list {
-                color: #0c5460;
-                font-size: 14px;
-                line-height: 1.6;
-                padding-left: 20px;
+                color: #0d47a1;
+                font-size: 15px;
+                line-height: 1.7;
+                padding-left: 25px;
+                position: relative;
+                z-index: 1;
             }
             
             .steps-list li {
-                margin-bottom: 8px;
+                margin-bottom: 12px;
+                position: relative;
+                padding-left: 10px;
+            }
+            
+            .steps-list li::before {
+                content: '✓';
+                position: absolute;
+                left: -15px;
+                color: #1976d2;
+                font-weight: bold;
             }
             
             .footer {
@@ -217,22 +325,48 @@ const sendFormEmail = async (name, registrationNumber, email, phone, event) => {
             
             @media (max-width: 600px) {
                 .email-container {
-                    margin: 0;
-                    border-radius: 0;
+                    margin: 10px;
+                    border-radius: 16px;
                 }
                 
                 .content {
-                    padding: 30px 20px;
+                    padding: 25px 20px;
+                }
+                
+                .logo-container {
+                    flex-direction: column;
+                    gap: 10px;
+                }
+                
+                .logo-text {
+                    font-size: 24px;
                 }
                 
                 .detail-row {
                     flex-direction: column;
                     align-items: flex-start;
-                    gap: 5px;
+                    gap: 8px;
+                    padding: 12px 15px;
+                }
+                
+                .detail-label {
+                    font-size: 12px;
+                }
+                
+                .detail-value {
+                    font-size: 14px;
                 }
                 
                 .greeting {
                     font-size: 20px;
+                }
+                
+                .registration-details {
+                    padding: 20px;
+                }
+                
+                .important-note, .next-steps {
+                    padding: 20px;
                 }
             }
         </style>
@@ -241,7 +375,10 @@ const sendFormEmail = async (name, registrationNumber, email, phone, event) => {
         <div class="email-container">
             <!-- Header -->
             <div class="header">
-                <div class="logo">ROBOAUT</div>
+                <div class="logo-container">
+                    <img src="http://localhost:3000/_next/image?url=%2Flogo.png&w=96&q=75" alt="ROBOAUT Logo" class="logo-image">
+                    <div class="logo-text">ROBOAUT</div>
+                </div>
                 <div class="header-subtitle">Robotics & Automation Club</div>
             </div>
             
@@ -261,27 +398,27 @@ const sendFormEmail = async (name, registrationNumber, email, phone, event) => {
                     <div class="details-title">📋 Registration Details</div>
                     
                     <div class="detail-row">
-                        <span class="detail-label">Participant Name</span> : 
+                        <span class="detail-label">Participant Name</span>
                         <span class="detail-value">${name}</span>
                     </div>
                     
                     <div class="detail-row">
-                        <span class="detail-label">Registration Number</span> : 
+                        <span class="detail-label">Registration Number</span>
                         <span class="detail-value">${registrationNumber}</span>
                     </div>
                     
                     <div class="detail-row">
-                        <span class="detail-label">Email Address</span> : 
+                        <span class="detail-label">Email Address</span>
                         <span class="detail-value">${email}</span>
                     </div>
                     
                     <div class="detail-row">
-                        <span class="detail-label">Contact Number</span> : 
+                        <span class="detail-label">Contact Number</span>
                         <span class="detail-value">${phone}</span>
                     </div>
                     
                     <div class="detail-row">
-                        <span class="detail-label">Event</span> : 
+                        <span class="detail-label">Event</span>
                         <span class="detail-value">${event || 'General Registration'}</span>
                     </div>
                     
