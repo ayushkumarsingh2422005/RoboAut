@@ -3,6 +3,7 @@
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 interface Resource {
   id: number;
@@ -134,10 +135,11 @@ const ResourcesSection = () => {
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.3),transparent_70%)]" />
                     <div className="relative z-10 h-full flex items-center justify-center overflow-hidden">
                       {resource.Photo ? (
-                        <img
+                        <Image
                           src={resource.Photo.url}
                           alt={resource.Title}
-                          className="w-full h-full object-contain"
+                          fill
+                          className="object-contain"
                         />
                       ) : (
                         <div className="text-5xl opacity-50">📁</div>

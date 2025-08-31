@@ -3,11 +3,29 @@
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
+
+// TypeScript interface for sponsor data
+interface SponsorLogo {
+  id: number;
+  url: string;
+  alternativeText?: string;
+}
+
+interface Sponsor {
+  id: number;
+  CompanyName: string;
+  CompanyType: string;
+  Partnership_Year: string;
+  Description?: string;
+  Website?: string;
+  CompanyLogo: SponsorLogo;
+}
 
 const SponsorsSection = () => {
 
-  const [sponsors, setSponsors] = useState<any[]>([]);
+  const [sponsors, setSponsors] = useState<Sponsor[]>([]);
   // const sponsors = [
   //   {
   //     id: 1,
@@ -136,9 +154,6 @@ const SponsorsSection = () => {
                     </div>
 
                     <h4 className="text-2xl font-orbitron font-bold text-white mb-2">{sponsor.CompanyName}</h4>
-                    <div className={`text-lg font-exo2 font-semibold mb-4 bg-gradient-to-r ${getTierColor(sponsor.tier)} bg-clip-text text-transparent`}>
-                      {sponsor.tier}
-                    </div>
                   </div>
                 </div>
               ))}
@@ -168,10 +183,12 @@ const SponsorsSection = () => {
                         </li>
                       ))}
                     </ul>
-
+                    
+                    <Link href="/reach-us">
                     <button className="w-full mt-6 px-4 py-3 bg-gradient-to-r from-orange-600/80 to-red-600/80 text-white font-exo2 font-semibold rounded-lg transition-all duration-300 hover:from-orange-500 hover:to-red-500 hover:scale-105">
                       Become Sponsor
                     </button>
+                    </Link>
                   </div>
                 </div>
               ))}
@@ -189,6 +206,7 @@ const SponsorsSection = () => {
                 innovative projects, talented students, and cutting-edge research that drives technological advancement.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/reach-us">
                 <button
                   className="relative px-8 py-4 bg-gradient-to-r from-orange-600 to-red-600 text-white font-exo2 font-semibold text-lg transition-all duration-300 hover:from-orange-500 hover:to-red-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(251,146,60,0.5)]"
                   style={{
@@ -197,9 +215,12 @@ const SponsorsSection = () => {
                 >
                   <span className="relative z-10">Become a Sponsor</span>
                 </button>
+                </Link>
+                <Link href="/reach-us">
                 <button className="px-8 py-4 border-2 border-orange-400 text-orange-400 font-exo2 font-semibold text-lg transition-all duration-300 hover:bg-orange-400 hover:text-black hover:scale-105">
                   Download Proposal
                 </button>
+                </Link>
               </div>
             </div>
           </div>

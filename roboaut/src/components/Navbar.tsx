@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -9,7 +9,7 @@ const Navbar = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   
-  const navItems = [
+  const navItems = useMemo(() => [
     { name: 'Home', href: '/' },
     { name: 'Projects', href: '/projects' },
     { name: 'Events', href: '/events' },
@@ -17,7 +17,7 @@ const Navbar = () => {
     { name: 'Achievements', href: '/achievements' },
     { name: 'Resources', href: '/resources' },
     { name: 'Sponsors', href: '/sponsors' },
-  ];
+  ], []);
   
   // Initialize activeItem based on current pathname
   const getInitialActiveItem = () => {
@@ -59,7 +59,7 @@ const Navbar = () => {
     if (currentNavItem) {
       setActiveItem(currentNavItem.name);
     }
-  }, [pathname]);
+  }, [pathname, navItems]);
 
   // Update indicator when activeItem changes or on initial load
   useEffect(() => {

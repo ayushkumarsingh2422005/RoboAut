@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import { TeamGridSkeleton, DepartmentSkeleton } from '@/components/TeamSkeleton';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 
 interface TeamMember {
   id: number;
@@ -27,7 +27,7 @@ const TeamSection = () => {
   const [error, setError] = useState<string | null>(null);
 
   // Define available departments for filtering
-  const departments = [
+  const departments = useMemo(() => [
     {
       value: 'all',
       name: "All Members",
@@ -63,7 +63,7 @@ const TeamSection = () => {
       description: "Content creation, social media, and documentation",
       icon: "📸"
     }
-  ];
+  ], []);
 
   // Get department color based on designation
   const getDepartmentColor = (designation: string) => {
@@ -108,7 +108,7 @@ const TeamSection = () => {
 
 
   // Update department counts
-  const updateDepartmentCounts = (members: TeamMember[]) => {
+  const updateDepartmentCounts = useCallback((members: TeamMember[]) => {
     const counts = {
       all: members.length,
       technical: members.filter(m => m.Designation.toLowerCase().includes('technical') || m.Designation.toLowerCase().includes('developer')).length,
@@ -124,7 +124,7 @@ const TeamSection = () => {
         dept.count = counts.all;
       }
     });
-  };
+  }, [departments]);
 
   useEffect(() => {
     const fetchTeamMembers = async () => {
@@ -150,7 +150,7 @@ const TeamSection = () => {
       }
     };
     fetchTeamMembers();
-  }, []);
+  }, [updateDepartmentCounts]);
 
 
   const filteredMembers = teamMembers;

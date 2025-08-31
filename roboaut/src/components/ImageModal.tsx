@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import Image from 'next/image';
 
 interface ImageModalProps {
@@ -16,15 +16,15 @@ const ImageModal = ({ isOpen, onClose, images, currentIndex, title, onNavigate }
   const currentImage = images[currentIndex];
   const hasMultipleImages = images.length > 1;
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     const newIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
     onNavigate(newIndex);
-  };
+  }, [currentIndex, images.length, onNavigate]);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     const newIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
     onNavigate(newIndex);
-  };
+  }, [currentIndex, images.length, onNavigate]);
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -48,7 +48,7 @@ const ImageModal = ({ isOpen, onClose, images, currentIndex, title, onNavigate }
       document.removeEventListener('keydown', handleKeyPress);
       document.body.style.overflow = 'unset';
     };
-  }, [isOpen, onClose, hasMultipleImages, currentIndex]);
+  }, [isOpen, onClose, hasMultipleImages, currentIndex, goToNext, goToPrevious]);
 
   if (!isOpen) return null;
 

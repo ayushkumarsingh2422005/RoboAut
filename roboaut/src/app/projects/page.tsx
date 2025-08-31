@@ -1,17 +1,39 @@
 'use client';
 
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { ProjectsGridSkeleton } from '@/components/ProjectSkeleton';
+import Image from 'next/image';
+
+// TypeScript interfaces for project data
+interface ProjectImage {
+  id: number;
+  url: string;
+  alternativeText?: string;
+  caption?: string;
+}
+
+interface Project {
+  id: number;
+  Title: string;
+  Description: string;
+  CurrentStatus: string;
+  Team_Lead: string;
+  Team_Members: string;
+  Technologies_Used: string;
+  Start_Date: string;
+  End_Date?: string;
+  Links: string;
+  Image: ProjectImage[];
+}
 
 const ProjectsSection = () => {
-  const [projects, setProjects] = useState<any[]>([]);
-  const [filteredProjects, setFilteredProjects] = useState<any[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
   const [selectedStatus, setSelectedStatus] = useState<string>('all');
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
-  const [selectedProject, setSelectedProject] = useState<any | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -96,7 +118,7 @@ const ProjectsSection = () => {
     fetchProjects();
   }, []);
 
-  const openModal = (project: any) => {
+  const openModal = (project: Project) => {
     setSelectedProject(project);
     setIsModalOpen(true);
     document.body.style.overflow = 'hidden';
@@ -253,11 +275,12 @@ const ProjectsSection = () => {
                       >
                         {/* Enhanced Background Image */}
                         <div className="absolute inset-0">
-                          <img
+                          <Image
                             src={imgUrl}
                             alt={project.Title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            loading="lazy"
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                            priority={false}
                           />
                           <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-800/70 to-gray-900/80" />
                         </div>
@@ -382,13 +405,14 @@ const ProjectsSection = () => {
                     Project Gallery
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {selectedProject.Image.map((img: any, index: number) => (
-                      <div key={img.id} className="group relative overflow-hidden rounded-2xl border border-white/20">
-                        <img
+                    {selectedProject.Image.map((img: ProjectImage, index: number) => (
+                      <div key={img.id} className="group relative overflow-hidden rounded-2xl border border-white/20 h-48">
+                        <Image
                           src={img.url}
                           alt={`${selectedProject.Title} - Image ${index + 1}`}
-                          className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                          loading="lazy"
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                          priority={false}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         <div className="absolute bottom-3 left-3 text-white/80 text-sm font-exo2">

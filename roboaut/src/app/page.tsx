@@ -378,7 +378,6 @@ export default function Home() {
               <div className="relative z-10">
                 <div className="text-center mb-8">
                   <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full flex items-center justify-center border border-purple-400/30">
-                    {/* <div className="text-3xl">👨‍🏫</div> */}
                     <Image src="/assets/drdalla.jpg" alt="Dr. Vijay Kumar Dalla" width={100} height={100} className="aspect-square object-fit rounded-full" />
                   </div>
                   <h3 className="text-2xl font-orbitron font-bold text-white mb-2">
@@ -394,16 +393,55 @@ export default function Home() {
 
                 <div className="space-y-6 text-lg text-gray-300 font-exo2 leading-relaxed text-center">
                   <p>
-                    "As the Professor in Charge of Team RoboAut, I have had the privilege of witnessing the growth and achievements of this remarkable group of students. The field of robotics and automation is not just about building machines; it's about solving real-world problems with intelligent, innovative solutions. Our club fosters an environment where creativity meets technology, empowering students to push the boundaries of what’s possible. The dedication, passion, and teamwork that I see in Team RoboAut is truly inspiring. Each project, each challenge taken on, reflects the drive to not only learn but to excel. This club is not just preparing students for the future of robotics—it’s shaping the future itself. I have no doubt that the work done here will have a lasting impact, both within the institute and beyond, as our students go on to become leaders in technology and innovation. Together, we are building the foundations for a smarter, more connected world, and I am excited to be part of this journey."
+                    &ldquo;As the Professor in Charge of Team RoboAut, I have had the privilege of witnessing the growth and achievements of this remarkable group of students. The field of robotics and automation is not just about building machines; it&rsquo;s about solving real-world problems with intelligent, innovative solutions. Our club fosters an environment where creativity meets technology, empowering students to push the boundaries of what&rsquo;s possible. The dedication, passion, and teamwork that I see in Team RoboAut is truly inspiring. Each project, each challenge taken on, reflects the drive to not only learn but to excel. This club is not just preparing students for the future of robotics&mdash;it&rsquo;s shaping the future itself. I have no doubt that the work done here will have a lasting impact, both within the institute and beyond, as our students go on to become leaders in technology and innovation. Together, we are building the foundations for a smarter, more connected world, and I am excited to be part of this journey.&rdquo;
                   </p>
                 </div>
 
-                {/* <div className="mt-8 pt-6 border-t border-purple-500/20">
-                  <div className="flex items-center justify-center space-x-2 text-purple-400">
-                    <span className="text-sm font-exo2">Best Wishes,</span>
-                    <span className="text-sm font-exo2 font-semibold">Dr. Rajesh Kumar</span>
+                {/* Additional Information */}
+                <div className="mt-10 flex flex-col items-center gap-2">
+                  <div className="flex flex-col sm:flex-row items-center gap-2">
+                    <span className="font-exo2 text-gray-400 text-sm">Email:</span>
+                    <a
+                      href="mailto:vijaydalla.me@nitjsr.ac.in"
+                      className="text-cyan-400 font-exo2 text-sm hover:underline"
+                    >
+                      vijaydalla.me@nitjsr.ac.in
+                    </a>
                   </div>
-                </div> */}
+                  <div className="flex flex-col sm:flex-row items-center gap-2">
+                    <span className="font-exo2 text-gray-400 text-sm">Phone:</span>
+                    <a
+                      href="tel:8126084443"
+                      className="text-cyan-400 font-exo2 text-sm hover:underline"
+                    >
+                      8126084443
+                    </a>
+                  </div>
+                  <div className="flex flex-row items-center gap-4 mt-2">
+                    <a
+                      href="https://www.instagram.com/drvijaydalla/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-pink-400 hover:text-pink-300 transition-colors"
+                      aria-label="Instagram"
+                    >
+                      <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5zm5.25.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                      </svg>
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/dr-vijay-kumar-dalla-assistan"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-400 hover:text-blue-300 transition-colors"
+                      aria-label="LinkedIn"
+                    >
+                      <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm15.5 11.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.88v1.36h.04c.4-.75 1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 3.61 4.62v5.56z"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

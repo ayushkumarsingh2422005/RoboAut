@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import { AchievementsGridSkeleton } from '@/components/AchievementSkeleton';
 import ImageModal from '@/components/ImageModal';
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 interface Achievement {
   id: number;
@@ -232,10 +233,12 @@ const AchievementsSection = () => {
                     {achievement.Images && achievement.Images.length > 0 && (
                       <div className="flex gap-3 mb-4 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-700">
                         {achievement.Images.map((img, index) => (
-                          <img
+                          <Image
                             key={img.id}
                             src={img.url}
                             alt={achievement.Title}
+                            width={112}
+                            height={80}
                             className="w-28 h-20 object-cover rounded-lg border border-white/10 hover:scale-105 transition-transform duration-300 cursor-pointer hover:border-blue-400/40"
                             onClick={() => setModalImage({
                               images: achievement.Images!,

@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import EventRegistrationModal from '@/components/EventRegistrationModal';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 interface Event {
   id: number;
@@ -375,10 +376,11 @@ const EventsSection = () => {
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.3),transparent_70%)]" />
                         <div className="relative z-10 h-full flex items-center justify-center overflow-hidden">
                           {event.Thumbnail ? (
-                            <img
+                            <Image
                               src={event.Thumbnail.url}
                               alt={event.Title}
-                              className="w-full h-full object-cover"
+                              fill
+                              className="object-cover"
                             />
                           ) : (
                             <div className="text-6xl opacity-50">🤖</div>
@@ -407,10 +409,11 @@ const EventsSection = () => {
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.3),transparent_70%)]" />
                     <div className="relative z-10 h-full flex items-center justify-center overflow-hidden">
                       {event.Thumbnail ? (
-                        <img
+                        <Image
                           src={event.Thumbnail.url}
                           alt={event.Title}
-                          className="w-full h-full object-cover"
+                          fill
+                          className="object-cover"
                         />
                       ) : (
                         <div className="text-4xl opacity-50">📸</div>
