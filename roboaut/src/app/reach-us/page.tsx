@@ -98,7 +98,7 @@ export default function ReachUsPage() {
     {
       icon: '🌐',
       title: 'Follow Us',
-      details: ['@roboaut_nitjsr', 'linkedin.com/company/roboaut', 'github.com/roboaut-nitjsr'],
+      details: ['@teamroboaut', 'linkedin.com/in/team-roboaut-124064320', 'github.com/roboaut-nitjsr'],
       color: 'cyan'
     }
   ];

@@ -43,8 +43,7 @@ const ProjectsSection = () => {
     { value: 'all', label: 'All Projects', icon: '🌟' },
     { value: 'complete', label: 'Completed', icon: '✓' },
     { value: 'ongoing', label: 'Ongoing', icon: '⟳' },
-    { value: 'research phase', label: 'Research', icon: '🔬' },
-    { value: 'prototype', label: 'Prototype', icon: '⚡' },
+    { value: 'research phase', label: 'Research', icon: '🔬' }
   ];
 
   const getStatusColor = (status: string) => {
@@ -305,9 +304,6 @@ const ProjectsSection = () => {
                                 <span className="mr-2">{getStatusIcon(project.CurrentStatus)}</span>
                                 {project.CurrentStatus}
                               </span>
-                            </div>
-                            <div className="w-8 h-8 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full flex items-center justify-center border border-white/20">
-                              <span className="text-white/60 text-sm">#{index + 1}</span>
                             </div>
                           </div>
 

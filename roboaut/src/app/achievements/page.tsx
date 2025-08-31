@@ -6,6 +6,7 @@ import { AchievementsGridSkeleton } from '@/components/AchievementSkeleton';
 import ImageModal from '@/components/ImageModal';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import ReadMoreModal from '@/components/ReadMoreModal';
 
 interface Achievement {
   id: number;
@@ -95,10 +96,10 @@ const AchievementsSection = () => {
   useEffect(() => {
     if (isVisible) {
       const finalCounts = {
-        projects: 25,
-        members: 150,
-        awards: 12,
-        workshops: 30
+        projects: 15,
+        members: 100,
+        awards: 10,
+        workshops: 15
       };
 
       const duration = 2000; // 2 seconds
@@ -251,10 +252,17 @@ const AchievementsSection = () => {
                       </div>
                     )}
 
-                    {/* Description */}
-                    <p className="text-gray-300 font-exo2 leading-relaxed mb-6 line-clamp-5">
-                      {achievement.Description}
-                    </p>
+                    {/* Description with Read More */}
+                    <div className="mb-6">
+                      <ReadMoreModal
+                        text={achievement.Description}
+                        maxLines={5}
+                        className="text-gray-300 font-exo2 leading-relaxed"
+                        buttonClassName="text-blue-400 hover:text-blue-300 bg-blue-400/10 hover:bg-blue-400/20 px-3 py-1 rounded-full text-xs font-medium"
+                        modalClassName="bg-gray-900/95 backdrop-blur-lg border-blue-400/30"
+                        title={`${achievement.Title} - Full Description`}
+                      />
+                    </div>
 
                     {/* Decorative Line */}
                     <div className="w-full h-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-500" />

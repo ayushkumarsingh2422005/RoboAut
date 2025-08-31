@@ -247,9 +247,10 @@ export default function GalleryPage() {
       <ImageModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
-        images={allPhotos.map(photo => ({ url: photo.url, alt: `Gallery image` }))}
+        images={allPhotos}
         currentIndex={currentImageIndex}
         onNavigate={handleNavigate}
+        title="Gallery"
       />
 
       <Footer />

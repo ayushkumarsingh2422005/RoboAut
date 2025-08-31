@@ -171,7 +171,7 @@ const ResourcesSection = () => {
                           rel="noopener noreferrer"
                           className="flex-1 px-4 py-2 bg-gradient-to-r from-red-600/80 to-orange-600/80 text-white font-exo2 font-medium text-sm rounded-lg transition-all duration-300 hover:from-red-500 hover:to-orange-500 hover:scale-105 text-center"
                         >
-                          Download PDF
+                          Learn More
                         </a>
                       )}
                       {resource.Links && (
@@ -198,7 +198,7 @@ const ResourcesSection = () => {
           )}
 
           {/* Study Groups */}
-          <div className="glass backdrop-blur-lg rounded-2xl p-8 border border-cyan-500/20 mb-16">
+          {/* <div className="glass backdrop-blur-lg rounded-2xl p-8 border border-cyan-500/20 mb-16">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-orbitron font-bold text-white mb-4">
                 Join Study Groups
@@ -230,7 +230,7 @@ const ResourcesSection = () => {
                 <span className="text-green-400 font-exo2 text-sm">35 members</span>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Newsletter Signup */}
           {/* <div className="text-center">

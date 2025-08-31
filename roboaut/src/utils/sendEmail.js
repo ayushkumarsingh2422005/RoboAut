@@ -462,14 +462,14 @@ const sendFormEmail = async (name, registrationNumber, email, phone, event) => {
                 <div class="footer-content">
                     <div class="contact-info">
                         <strong>ROBOAUT - Robotics & Automation Club</strong><br>
-                        📧 contact@roboaut.in | 🌐 www.roboaut.in<br>
+                        📧 teamroboaut@nitjsr.ac.in | 🌐 www.roboaut.in<br>
                         📱 Follow us on social media for latest updates
                     </div>
                 </div>
                 
                 <div class="auto-generated">
                     🤖 This is an auto-generated email sent from our registration system. 
-                    Please do not reply to this email address. For support, contact us at contact@roboaut.in
+                    Please do not reply to this email address. For support, contact us at teamroboaut@nitjsr.ac.in
                 </div>
             </div>
         </div>

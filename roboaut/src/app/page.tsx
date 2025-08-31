@@ -1,14 +1,17 @@
 'use client';
 
+import { useState } from 'react';
 import Spline from "@splinetool/react-spline";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import VideoModal from '../components/VideoModal';
 import Image from "next/image";
 import Link from "next/link";
 
 
 
 export default function Home() {
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
   // Generate randomized particle positions for dynamic motion
   const generateRandomParticles = () => {
@@ -122,7 +125,9 @@ export default function Home() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-slide-in-left" style={{ animationDelay: '0.8s' }}>
                 {/* Primary CTA Button - Robotic Style */}
-                <Link href="/achievements" className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-exo2 font-semibold text-lg transition-all duration-300 hover:from-blue-500 hover:to-purple-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] animate-glow"
+                <button 
+                  onClick={() => setIsVideoModalOpen(true)}
+                  className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-exo2 font-semibold text-lg transition-all duration-300 hover:from-blue-500 hover:to-purple-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] animate-glow"
                   style={{
                     clipPath:
                       "polygon(0px 0px, 90% 0px, 100% 25%, 100% 100%, 10% 100%, 0px 75%)"
@@ -132,9 +137,9 @@ export default function Home() {
                   <span
                     className="relative z-10"
                   >
-                    Our Achivements
+                    Launch Video
                   </span>
-                </Link>
+                </button>
 
                 {/* Secondary Button */}
                 <Link href="/team" className="px-8 py-4 border-2 border-transparent bg-blue-400/20 backdrop-blur-md text-blue-400 font-exo2 font-semibold text-lg transition-all duration-300 hover:bg-blue-400 hover:text-black hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:scale-105"
@@ -150,7 +155,7 @@ export default function Home() {
               {/* Stats */}
               <div className="grid grid-cols-3 gap-6 pt-8 animate-slide-in-left" style={{ animationDelay: '1s' }}>
                 <div className="text-center group">
-                  <div className="text-2xl lg:text-3xl font-orbitron font-bold text-blue-400 group-hover:text-blue-300 transition-colors duration-300">50+</div>
+                  <div className="text-2xl lg:text-3xl font-orbitron font-bold text-blue-400 group-hover:text-blue-300 transition-colors duration-300">100+</div>
                   <div className="text-sm text-gray-400 font-exo2">Active Members</div>
                 </div>
                 <div className="text-center group">
@@ -379,7 +384,7 @@ export default function Home() {
               <div className="relative z-10">
                 <div className="text-center mb-8">
                   <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full flex items-center justify-center border border-purple-400/30">
-                    <Image src="/assets/drdalla.jpg" alt="Dr. Vijay Kumar Dalla" width={100} height={100} className="aspect-square object-fit rounded-full" />
+                    <Image src="/team/vp.png" alt="Dr. Vijay Kumar Dalla" width={100} height={100} className="aspect-square object-fit rounded-full" />
                   </div>
                   <h3 className="text-2xl font-orbitron font-bold text-white mb-2">
                     Dr. Vijay Kumar Dalla
@@ -471,7 +476,7 @@ export default function Home() {
             <div className="text-center group">
               <div className="glass backdrop-blur-lg rounded-2xl p-6 border border-green-500/20 hover:border-green-400/40 transition-all duration-500 hover:scale-105">
                 <div className="text-4xl lg:text-5xl font-orbitron font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
-                  50+
+                  100+
                 </div>
                 <div className="text-gray-300 font-exo2 font-medium">Active Members</div>
                 <div className="text-gray-500 font-exo2 text-sm">From all branches</div>
@@ -586,6 +591,14 @@ export default function Home() {
         </div>
       </section>
       <Footer />
+
+      {/* Video Modal */}
+      <VideoModal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+        videoUrl="https://www.youtube.com/embed/Ev4tJLYurqc?si=4R-XaARNuQOe91KV"
+        title="RoboAut Launch Video"
+      />
     </>
   );
 }
