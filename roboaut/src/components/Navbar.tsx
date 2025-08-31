@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -9,15 +9,15 @@ const Navbar = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   
-  const navItems = [
+  const navItems = useMemo(() => [
     { name: 'Home', href: '/' },
     { name: 'Projects', href: '/projects' },
     { name: 'Events', href: '/events' },
-    { name: 'Team', href: '/team' },
+    { name: 'Gallery', href: '/gallery' },
     { name: 'Achievements', href: '/achievements' },
     { name: 'Resources', href: '/resources' },
     { name: 'Sponsors', href: '/sponsors' },
-  ];
+  ], []);
   
   // Initialize activeItem based on current pathname
   const getInitialActiveItem = () => {
@@ -59,7 +59,7 @@ const Navbar = () => {
     if (currentNavItem) {
       setActiveItem(currentNavItem.name);
     }
-  }, [pathname]);
+  }, [pathname, navItems]);
 
   // Update indicator when activeItem changes or on initial load
   useEffect(() => {
@@ -110,14 +110,14 @@ const Navbar = () => {
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <Link href="/" className="flex-shrink-0">
             <h1 className="text-2xl font-sf-transrobotics font-medium bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent flex items-center gap-2">
               <Image src="/logo.png" alt="RoboAut" width={40} height={40} className="w-10 h-10" />
               <span className='shadow-none'>
                 <span className='text-[#004d99]'>Robo</span><span className='text-[#00bfff]'>Aut</span>
               </span>
             </h1>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:block">

@@ -5,39 +5,25 @@ const Footer = () => {
 
   const footerLinks = {
     about: [
-      { name: 'Our Story', href: '#about' },
-      { name: 'Mission & Vision', href: '#mission' },
-      { name: 'Faculty Advisors', href: '#advisors' },
-      { name: 'Achievements', href: '#achievements' },
-      { name: 'Annual Reports', href: '#reports' }
-    ],
-    academics: [
-      { name: 'Research Areas', href: '#research' },
-      { name: 'Publications', href: '#publications' },
-      { name: 'Collaborations', href: '#collaborations' },
-      { name: 'Internships', href: '#internships' },
-      { name: 'Career Guidance', href: '#careers' }
+      { name: 'Our Team', href: '/team' },
+      { name: 'Gallery', href: '/gallery' },
+      { name: 'Achievements', href: '/achievements' },
+      { name: 'Sponsors', href: '/sponsors' },
+      { name: 'Projects', href: '/projects' }
     ],
     community: [
-      { name: 'Join RoboAut', href: '#join' },
-      { name: 'Events Calendar', href: '#events' },
-      { name: 'Alumni Network', href: '#alumni' },
-      { name: 'Student Chapters', href: '#chapters' },
-      { name: 'Volunteer Programs', href: '#volunteer' }
-    ],
-    resources: [
-      { name: 'Learning Materials', href: '#materials' },
-      { name: 'Project Repository', href: '#repository' },
-      { name: 'Technical Blog', href: '#blog' },
-      { name: 'Equipment Access', href: '#equipment' },
-      { name: 'Lab Booking', href: '#booking' }
+      { name: 'Resources', href: '/resources' },
+      { name: 'Events', href: '/events' },
+      { name: 'Join Us', href: '/reach-us' },
+      { name: 'Become Sponsor', href: '/reach-us' },
+      { name: 'Event Participant', href: '/events' }
     ]
   };
 
   const socialLinks = [
     { 
       name: 'Instagram', 
-      href: 'https://instagram.com/roboaut_nitjsr', 
+      href: 'https://www.instagram.com/teamroboaut/', 
       color: 'hover:text-pink-400',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -47,7 +33,7 @@ const Footer = () => {
     },
     { 
       name: 'LinkedIn', 
-      href: 'https://linkedin.com/company/roboaut', 
+      href: 'https://www.linkedin.com/in/team-roboaut-124064320/', 
       color: 'hover:text-blue-400',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -112,7 +98,7 @@ const Footer = () => {
           <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
         </svg>
       ), 
-      text: 'contact@roboaut.in' 
+      text: 'teamroboaut@nitjsr.ac.in' 
     },
     { 
       icon: (
@@ -120,7 +106,7 @@ const Footer = () => {
           <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
         </svg>
       ), 
-      text: '+91 98765 43210' 
+      text: '+91 97119 44706' 
     },
     { 
       icon: (
@@ -265,23 +251,6 @@ const Footer = () => {
 
               {/* Additional Links */}
               <div className="flex flex-wrap items-center space-x-6 text-sm font-exo2">
-                <a href="#privacy" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
-                  Privacy Policy
-                </a>
-                <a href="#terms" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
-                  Terms of Service
-                </a>
-                <a href="#cookies" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
-                  Cookie Policy
-                </a>
-                <a href="#accessibility" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
-                  Accessibility
-                </a>
-              </div>
-            </div>
-
-            {/* DigiCraft Credit */}
-            <div className="mt-4 pt-4 border-t border-gray-800 text-center">
               <p className="text-gray-500 font-exo2 text-sm">
                 Designed and Developed by{' '}
                 <a 
@@ -293,6 +262,7 @@ const Footer = () => {
                   DigiCraft
                 </a>
               </p>
+              </div>
             </div>
 
             {/* Floating Decoration */}

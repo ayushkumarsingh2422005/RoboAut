@@ -29,26 +29,3 @@ export async function POST(request: NextRequest) {
     }, { status: 500 });
   }
 }
-
-
-
-
-// Body: {
-//     event: 'entry.publish',
-//     createdAt: '2025-08-25T21:59:08.927Z',
-//     model: 'form',
-//     uid: 'api::form.form',
-//     entry: {
-//       id: 10,
-//       documentId: 'ob0cf8k9muo1yqc8hzrtvbmc',
-//       ParticipantName: 'jhaf',
-//       RegistrationNumber: 'jsajdhjhfv',
-//       createdAt: '2025-08-25T21:59:08.908Z',
-//       updatedAt: '2025-08-25T21:59:08.908Z',
-//       publishedAt: '2025-08-25T21:59:08.915Z',
-//       Email: 'ayush2422005@gmail.com',
-//       Contact: '1234567890',
-//       event: null,
-//       Resume: null
-//     }
-//   }
