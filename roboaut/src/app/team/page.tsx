@@ -316,9 +316,7 @@ const TeamSection = () => {
                           <h3 className="text-xl font-orbitron font-bold text-white group-hover:text-purple-400 transition-colors duration-300">
                             {member.Name}
                           </h3>
-                          <div className="w-8 h-8 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full flex items-center justify-center border border-white/20">
-                            <span className="text-white/60 text-sm">#{index + 1}</span>
-                          </div>
+                          
                         </div>
 
                         <div className={`text-lg font-exo2 font-semibold mb-3 bg-gradient-to-r ${getDepartmentColor(member.Designation)} bg-clip-text text-transparent`}>
@@ -329,18 +327,7 @@ const TeamSection = () => {
                           {member.Description}
                         </div>
 
-                        {/* Department Badge */}
-                        <div className="flex items-center space-x-2">
-                          <span className="text-lg">{getDepartmentIcon(member.Designation)}</span>
-                          <span className="text-xs text-gray-400 font-exo2">
-                            {member.Designation.includes('Founder') || member.Designation.includes('President')
-                              ? 'Leadership'
-                              : member.Designation.includes('Head')
-                                ? 'Management'
-                                : 'Team Member'
-                            }
-                          </span>
-                        </div>
+                        
                       </div>
                     </div>
                   </div>

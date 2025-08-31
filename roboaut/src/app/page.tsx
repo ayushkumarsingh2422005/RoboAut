@@ -390,38 +390,53 @@ export default function Home() {
                     Dr. Vijay Kumar Dalla
                   </h3>
                   <p className="text-purple-400 font-exo2 font-medium">
-                    Faculty Incharge, RoboAut Club
+                    Founder, Faculty Incharge, RoboAut Club
                   </p>
                   <p className="text-gray-400 font-exo2 text-sm">
-                    Department of Mechanical Engineering, NIT Jamshedpur
+                    Assistant Professor, Department of Mechanical Engineering, NIT Jamshedpur
                   </p>
                 </div>
 
                 <div className="space-y-6 text-lg text-gray-300 font-exo2 leading-relaxed text-center">
                   <p>
-                    &ldquo;As the Professor in Charge of Team RoboAut, I have had the privilege of witnessing the growth and achievements of this remarkable group of students. The field of robotics and automation is not just about building machines; it&rsquo;s about solving real-world problems with intelligent, innovative solutions. Our club fosters an environment where creativity meets technology, empowering students to push the boundaries of what&rsquo;s possible. The dedication, passion, and teamwork that I see in Team RoboAut is truly inspiring. Each project, each challenge taken on, reflects the drive to not only learn but to excel. This club is not just preparing students for the future of robotics&mdash;it&rsquo;s shaping the future itself. I have no doubt that the work done here will have a lasting impact, both within the institute and beyond, as our students go on to become leaders in technology and innovation. Together, we are building the foundations for a smarter, more connected world, and I am excited to be part of this journey.&rdquo;
+                    &ldquo;The RoboAut Club was founded by Dr. Vijay Kumar Dalla, Assistant Professor, Mechanical Engg. Dept. with the mission to ignite creativity, innovation, and excellence in the fields of Robotics and Automation. Officially established on 1st May 2024, the club serves as a dynamic platform for students to explore cutting-edge technologies, transform ideas into reality, and contribute to the future of intelligent machines.
+                    &rdquo;
+                  </p>
+                  <p>
+                    &ldquo;With a strong community of passionate learners, innovators, and creators, RoboAut Club is dedicated to fostering interdisciplinary collaboration, hands-on learning, and impactful projects that bridge academics with real-world applications.
+                    &rdquo;
                   </p>
                 </div>
 
                 {/* Additional Information */}
                 <div className="mt-10 flex flex-col items-center gap-2">
-                  <div className="flex flex-col sm:flex-row items-center gap-2">
-                    <span className="font-exo2 text-gray-400 text-sm">Email:</span>
+                  <div className="flex flex-col sm:flex-row items-center gap-10">
+                    {/* <span className="font-exo2 text-gray-400 text-sm">Email:</span> */}
+                    <a
+                      href="https://share.google/JlNahtEfBavTWiqkh"
+                      target="_blank"
+                      className="text-cyan-400 font-exo2 text-sm hover:underline"
+                    >
+                      <span className="text-cyan-400 font-exo2 text-sm hover:underline">College Profile</span>
+
+                    </a>
                     <a
                       href="mailto:vijaydalla.me@nitjsr.ac.in"
                       className="text-cyan-400 font-exo2 text-sm hover:underline"
                     >
                       vijaydalla.me@nitjsr.ac.in
                     </a>
-                  </div>
-                  <div className="flex flex-col sm:flex-row items-center gap-2">
-                    <span className="font-exo2 text-gray-400 text-sm">Phone:</span>
+                    
+                    {/* <span className="font-exo2 text-gray-400 text-sm">Phone:</span> */}
                     <a
                       href="tel:8126084443"
                       className="text-cyan-400 font-exo2 text-sm hover:underline"
                     >
-                      8126084443
+                      +91-8126084443
                     </a>
+                  </div>
+                  <div className="flex flex-col sm:flex-row items-center gap-2">
+                    
                   </div>
                   <div className="flex flex-row items-center gap-4 mt-2">
                     <a
