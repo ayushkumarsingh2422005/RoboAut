@@ -3,6 +3,7 @@
 import Spline from "@splinetool/react-spline";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Image from "next/image";
 
 
 
@@ -130,7 +131,7 @@ export default function Home() {
                   <span
                     className="relative z-10"
                   >
-                    Join the Revolution
+                    Our Achivements
                   </span>
                 </button>
 
@@ -141,7 +142,7 @@ export default function Home() {
                       "polygon(0px 0px, 90% 0px, 100% 25%, 100% 100%, 10% 100%, 0px 75%)"
                   }}
                 >
-                  Learn More
+                  Our Team
                 </button>
               </div>
 
@@ -152,7 +153,7 @@ export default function Home() {
                   <div className="text-sm text-gray-400 font-exo2">Active Members</div>
                 </div>
                 <div className="text-center group">
-                  <div className="text-2xl lg:text-3xl font-orbitron font-bold text-purple-400 group-hover:text-purple-300 transition-colors duration-300">25+</div>
+                  <div className="text-2xl lg:text-3xl font-orbitron font-bold text-purple-400 group-hover:text-purple-300 transition-colors duration-300">15+</div>
                   <div className="text-sm text-gray-400 font-exo2">Projects</div>
                 </div>
                 <div className="text-center group">
@@ -317,7 +318,7 @@ export default function Home() {
           </div>
 
           {/* Call to Action */}
-          <div className="text-center mt-16">
+          {/* <div className="text-center mt-16">
             <div className="glass backdrop-blur-lg rounded-2xl p-8 border border-blue-500/20 max-w-3xl mx-auto">
               <h3 className="text-2xl font-orbitron font-bold text-white mb-4">
                 Ready to Shape the Future?
@@ -345,7 +346,7 @@ export default function Home() {
                 </button>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -372,51 +373,37 @@ export default function Home() {
           <div className="max-w-4xl mx-auto">
             <div className="glass backdrop-blur-lg rounded-2xl p-8 lg:p-12 border border-purple-500/20 relative overflow-hidden">
               {/* Quote Icon */}
-              <div className="absolute top-6 right-6 text-6xl text-purple-400/20">"</div>
-              
+              {/* <div className="absolute top-6 right-6 text-6xl text-purple-400/20">"</div> */}
+
               <div className="relative z-10">
                 <div className="text-center mb-8">
                   <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full flex items-center justify-center border border-purple-400/30">
-                    <div className="text-3xl">👨‍🏫</div>
+                    {/* <div className="text-3xl">👨‍🏫</div> */}
+                    <Image src="/assets/drdalla.jpg" alt="Dr. Vijay Kumar Dalla" width={100} height={100} className="aspect-square object-fit rounded-full" />
                   </div>
                   <h3 className="text-2xl font-orbitron font-bold text-white mb-2">
-                    Dr. Rajesh Kumar
+                    Dr. Vijay Kumar Dalla
                   </h3>
                   <p className="text-purple-400 font-exo2 font-medium">
                     Faculty Incharge, RoboAut Club
                   </p>
                   <p className="text-gray-400 font-exo2 text-sm">
-                    Department of Electrical Engineering, NIT Jamshedpur
+                    Department of Mechanical Engineering, NIT Jamshedpur
                   </p>
                 </div>
 
                 <div className="space-y-6 text-lg text-gray-300 font-exo2 leading-relaxed text-center">
                   <p>
-                    "RoboAut represents the pinnacle of student innovation and technological advancement 
-                    at NIT Jamshedpur. As the faculty incharge, I am immensely proud to witness the 
-                    remarkable growth and achievements of our students in the field of robotics and automation."
-                  </p>
-                  
-                  <p>
-                    "Our club has consistently demonstrated that with the right guidance, resources, and 
-                    determination, students can achieve extraordinary feats. From autonomous navigation 
-                    systems to smart home automation, our projects showcase the practical application 
-                    of theoretical knowledge."
-                  </p>
-                  
-                  <p>
-                    "I encourage all students to join RoboAut and be part of this incredible journey 
-                    of learning, innovation, and growth. Together, we are not just building robots; 
-                    we are shaping the future of technology."
+                    "As the Professor in Charge of Team RoboAut, I have had the privilege of witnessing the growth and achievements of this remarkable group of students. The field of robotics and automation is not just about building machines; it's about solving real-world problems with intelligent, innovative solutions. Our club fosters an environment where creativity meets technology, empowering students to push the boundaries of what’s possible. The dedication, passion, and teamwork that I see in Team RoboAut is truly inspiring. Each project, each challenge taken on, reflects the drive to not only learn but to excel. This club is not just preparing students for the future of robotics—it’s shaping the future itself. I have no doubt that the work done here will have a lasting impact, both within the institute and beyond, as our students go on to become leaders in technology and innovation. Together, we are building the foundations for a smarter, more connected world, and I am excited to be part of this journey."
                   </p>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-purple-500/20">
+                {/* <div className="mt-8 pt-6 border-t border-purple-500/20">
                   <div className="flex items-center justify-center space-x-2 text-purple-400">
                     <span className="text-sm font-exo2">Best Wishes,</span>
                     <span className="text-sm font-exo2 font-semibold">Dr. Rajesh Kumar</span>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -424,7 +411,6 @@ export default function Home() {
       </section>
 
       {/* Why Join RoboAut Section */}
-            {/* Quick Stats Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0 bg-gradient-to-br from-green-900/10 via-blue-900/10 to-purple-900/10" />
@@ -456,7 +442,7 @@ export default function Home() {
             <div className="text-center group">
               <div className="glass backdrop-blur-lg rounded-2xl p-6 border border-blue-500/20 hover:border-blue-400/40 transition-all duration-500 hover:scale-105">
                 <div className="text-4xl lg:text-5xl font-orbitron font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
-                  25+
+                  15+
                 </div>
                 <div className="text-gray-300 font-exo2 font-medium">Projects</div>
                 <div className="text-gray-500 font-exo2 text-sm">Completed & ongoing</div>
@@ -485,7 +471,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-          {/* Section Header */}
+      {/* Section Header */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div>
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-orbitron font-bold text-white mb-6">
               <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-green-400 bg-clip-text text-transparent">
@@ -506,7 +494,7 @@ export default function Home() {
               <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🚀</div>
               <h3 className="text-xl font-orbitron font-bold text-white mb-4">Hands-on Experience</h3>
               <p className="text-gray-300 font-exo2 leading-relaxed">
-                Work on real-world projects using cutting-edge technologies like ROS, Arduino, 
+                Work on real-world projects using cutting-edge technologies like ROS, Arduino,
                 Raspberry Pi, and advanced sensors. Gain practical skills that industry demands.
               </p>
             </div>
@@ -515,7 +503,7 @@ export default function Home() {
               <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🏆</div>
               <h3 className="text-xl font-orbitron font-bold text-white mb-4">Competition Success</h3>
               <p className="text-gray-300 font-exo2 leading-relaxed">
-                Participate in prestigious robotics competitions like Robocon, eYRC, and 
+                Participate in prestigious robotics competitions like Robocon, eYRC, and
                 international hackathons. Win awards and recognition for your innovations.
               </p>
             </div>
@@ -524,7 +512,7 @@ export default function Home() {
               <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🤝</div>
               <h3 className="text-xl font-orbitron font-bold text-white mb-4">Industry Connections</h3>
               <p className="text-gray-300 font-exo2 leading-relaxed">
-                Network with industry professionals, attend tech talks, and get internship 
+                Network with industry professionals, attend tech talks, and get internship
                 opportunities with leading robotics and automation companies.
               </p>
             </div>
@@ -533,7 +521,7 @@ export default function Home() {
               <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">📚</div>
               <h3 className="text-xl font-orbitron font-bold text-white mb-4">Skill Development</h3>
               <p className="text-gray-300 font-exo2 leading-relaxed">
-                Attend workshops on AI, machine learning, computer vision, and robotics. 
+                Attend workshops on AI, machine learning, computer vision, and robotics.
                 Learn from experts and enhance your technical expertise.
               </p>
             </div>
@@ -542,7 +530,7 @@ export default function Home() {
               <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">💡</div>
               <h3 className="text-xl font-orbitron font-bold text-white mb-4">Innovation Hub</h3>
               <p className="text-gray-300 font-exo2 leading-relaxed">
-                Be part of a creative environment where ideas flourish. Collaborate with 
+                Be part of a creative environment where ideas flourish. Collaborate with
                 like-minded innovators and turn your concepts into reality.
               </p>
             </div>
@@ -551,155 +539,13 @@ export default function Home() {
               <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🌍</div>
               <h3 className="text-xl font-orbitron font-bold text-white mb-4">Global Impact</h3>
               <p className="text-gray-300 font-exo2 leading-relaxed">
-                Contribute to solutions that address real-world challenges. Your projects 
+                Contribute to solutions that address real-world challenges. Your projects
                 could make a difference in healthcare, agriculture, or environmental conservation.
               </p>
             </div>
           </div>
         </div>
       </section>
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/10 via-blue-900/10 to-green-900/10" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(34,211,238,0.1),transparent_50%)]" />
-
-        <div className="max-w-7xl mx-auto relative z-10">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-orbitron font-bold text-white mb-6">
-              <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-green-400 bg-clip-text text-transparent">
-                Why Join RoboAut?
-              </span>
-            </h2>
-            <p className="text-xl text-gray-300 font-exo2 max-w-3xl mx-auto leading-relaxed">
-              Discover the unique opportunities and experiences that await you as a member of our robotics community
-            </p>
-            <div className="mt-8 flex justify-center">
-              <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-green-400 rounded-full" />
-            </div>
-          </div>
-
-          {/* Benefits Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="glass backdrop-blur-lg rounded-2xl p-8 border border-cyan-500/20 hover:border-cyan-400/40 transition-all duration-500 hover:scale-105 group">
-              <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🚀</div>
-              <h3 className="text-xl font-orbitron font-bold text-white mb-4">Hands-on Experience</h3>
-              <p className="text-gray-300 font-exo2 leading-relaxed">
-                Work on real-world projects using cutting-edge technologies like ROS, Arduino, 
-                Raspberry Pi, and advanced sensors. Gain practical skills that industry demands.
-              </p>
-            </div>
-
-            <div className="glass backdrop-blur-lg rounded-2xl p-8 border border-blue-500/20 hover:border-blue-400/40 transition-all duration-500 hover:scale-105 group">
-              <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🏆</div>
-              <h3 className="text-xl font-orbitron font-bold text-white mb-4">Competition Success</h3>
-              <p className="text-gray-300 font-exo2 leading-relaxed">
-                Participate in prestigious robotics competitions like Robocon, eYRC, and 
-                international hackathons. Win awards and recognition for your innovations.
-              </p>
-            </div>
-
-            <div className="glass backdrop-blur-lg rounded-2xl p-8 border border-green-500/20 hover:border-green-400/40 transition-all duration-500 hover:scale-105 group">
-              <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🤝</div>
-              <h3 className="text-xl font-orbitron font-bold text-white mb-4">Industry Connections</h3>
-              <p className="text-gray-300 font-exo2 leading-relaxed">
-                Network with industry professionals, attend tech talks, and get internship 
-                opportunities with leading robotics and automation companies.
-              </p>
-            </div>
-
-            <div className="glass backdrop-blur-lg rounded-2xl p-8 border border-purple-500/20 hover:border-purple-400/40 transition-all duration-500 hover:scale-105 group">
-              <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">📚</div>
-              <h3 className="text-xl font-orbitron font-bold text-white mb-4">Skill Development</h3>
-              <p className="text-gray-300 font-exo2 leading-relaxed">
-                Attend workshops on AI, machine learning, computer vision, and robotics. 
-                Learn from experts and enhance your technical expertise.
-              </p>
-            </div>
-
-            <div className="glass backdrop-blur-lg rounded-2xl p-8 border border-orange-500/20 hover:border-orange-400/40 transition-all duration-500 hover:scale-105 group">
-              <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">💡</div>
-              <h3 className="text-xl font-orbitron font-bold text-white mb-4">Innovation Hub</h3>
-              <p className="text-gray-300 font-exo2 leading-relaxed">
-                Be part of a creative environment where ideas flourish. Collaborate with 
-                like-minded innovators and turn your concepts into reality.
-              </p>
-            </div>
-
-            <div className="glass backdrop-blur-lg rounded-2xl p-8 border border-red-500/20 hover:border-red-400/40 transition-all duration-500 hover:scale-105 group">
-              <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🌍</div>
-              <h3 className="text-xl font-orbitron font-bold text-white mb-4">Global Impact</h3>
-              <p className="text-gray-300 font-exo2 leading-relaxed">
-                Contribute to solutions that address real-world challenges. Your projects 
-                could make a difference in healthcare, agriculture, or environmental conservation.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Quick Stats Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute inset-0 bg-gradient-to-br from-green-900/10 via-blue-900/10 to-purple-900/10" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(34,197,94,0.1),transparent_50%)]" />
-
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-orbitron font-bold text-white mb-6">
-              <span className="bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-                RoboAut by the Numbers
-              </span>
-            </h2>
-            <div className="mt-8 flex justify-center">
-              <div className="w-24 h-1 bg-gradient-to-r from-green-400 to-purple-400 rounded-full" />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center group">
-              <div className="glass backdrop-blur-lg rounded-2xl p-6 border border-green-500/20 hover:border-green-400/40 transition-all duration-500 hover:scale-105">
-                <div className="text-4xl lg:text-5xl font-orbitron font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
-                  50+
-                </div>
-                <div className="text-gray-300 font-exo2 font-medium">Active Members</div>
-                <div className="text-gray-500 font-exo2 text-sm">From all branches</div>
-              </div>
-            </div>
-
-            <div className="text-center group">
-              <div className="glass backdrop-blur-lg rounded-2xl p-6 border border-blue-500/20 hover:border-blue-400/40 transition-all duration-500 hover:scale-105">
-                <div className="text-4xl lg:text-5xl font-orbitron font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
-                  25+
-                </div>
-                <div className="text-gray-300 font-exo2 font-medium">Projects</div>
-                <div className="text-gray-500 font-exo2 text-sm">Completed & ongoing</div>
-              </div>
-            </div>
-
-            <div className="text-center group">
-              <div className="glass backdrop-blur-lg rounded-2xl p-6 border border-purple-500/20 hover:border-purple-400/40 transition-all duration-500 hover:scale-105">
-                <div className="text-4xl lg:text-5xl font-orbitron font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
-                  10+
-                </div>
-                <div className="text-gray-300 font-exo2 font-medium">Awards</div>
-                <div className="text-gray-500 font-exo2 text-sm">National & international</div>
-              </div>
-            </div>
-
-            <div className="text-center group">
-              <div className="glass backdrop-blur-lg rounded-2xl p-6 border border-orange-500/20 hover:border-orange-400/40 transition-all duration-500 hover:scale-105">
-                <div className="text-4xl lg:text-5xl font-orbitron font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
-                  15+
-                </div>
-                <div className="text-gray-300 font-exo2 font-medium">Workshops</div>
-                <div className="text-gray-500 font-exo2 text-sm">Conducted annually</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <Footer />
     </>
   );

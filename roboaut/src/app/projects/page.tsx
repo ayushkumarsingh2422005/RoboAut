@@ -1,52 +1,129 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { ProjectsGridSkeleton } from '@/components/ProjectSkeleton';
 
 const ProjectsSection = () => {
+  const [projects, setProjects] = useState<any[]>([]);
+  const [filteredProjects, setFilteredProjects] = useState<any[]>([]);
+  const [selectedStatus, setSelectedStatus] = useState<string>('all');
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const [selectedProject, setSelectedProject] = useState<any | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const projects = [
-    {
-      id: 1,
-      title: "Autonomous Navigation Bot",
-      description: "Advanced AI-powered robot capable of autonomous navigation in complex environments using computer vision and LIDAR sensors.",
-      technologies: ["Python", "OpenCV", "ROS", "TensorFlow"],
-      status: "Completed",
-      image: "/project1.jpg",
-      gradient: "from-blue-500 to-cyan-500"
-    },
-    {
-      id: 2,
-      title: "Smart Home Automation",
-      description: "IoT-based home automation system with voice control, mobile app integration, and energy optimization algorithms.",
-      technologies: ["Arduino", "ESP32", "React Native", "Firebase"],
-      status: "In Progress",
-      image: "/project2.jpg",
-      gradient: "from-purple-500 to-pink-500"
-    },
-    {
-      id: 3,
-      title: "Robotic Arm Controller",
-      description: "6-DOF robotic arm with precise control system for industrial automation and research applications.",
-      technologies: ["C++", "MATLAB", "Solidworks", "PID Control"],
-      status: "Completed",
-      image: "/project3.jpg",
-      gradient: "from-green-500 to-teal-500"
-    }
+  // Define available statuses for filtering
+  const statusOptions = [
+    { value: 'all', label: 'All Projects', icon: '🌟' },
+    { value: 'complete', label: 'Completed', icon: '✓' },
+    { value: 'ongoing', label: 'Ongoing', icon: '⟳' },
+    { value: 'research phase', label: 'Research', icon: '🔬' },
+    { value: 'prototype', label: 'Prototype', icon: '⚡' },
   ];
 
   const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'Completed': return 'text-green-400 bg-green-400/10 border-green-400/30';
-      case 'In Progress': return 'text-blue-400 bg-blue-400/10 border-blue-400/30';
-      case 'Research Phase': return 'text-purple-400 bg-purple-400/10 border-purple-400/30';
-      case 'Prototype': return 'text-orange-400 bg-orange-400/10 border-orange-400/30';
-      default: return 'text-gray-400 bg-gray-400/10 border-gray-400/30';
+    switch (status?.toLowerCase()) {
+      case 'complete':
+      case 'completed':
+        return 'text-emerald-400 bg-emerald-400/10 border-emerald-400/30';
+      case 'in progress':
+      case 'ongoing':
+        return 'text-blue-400 bg-blue-400/10 border-blue-400/30';
+      case 'research phase':
+        return 'text-purple-400 bg-purple-400/10 border-purple-400/30';
+      case 'prototype':
+        return 'text-amber-400 bg-amber-400/10 border-amber-400/30';
+      default:
+        return 'text-gray-400 bg-gray-400/10 border-gray-400/30';
     }
   };
+
+  const getStatusIcon = (status: string) => {
+    switch (status?.toLowerCase()) {
+      case 'complete':
+      case 'completed':
+        return '✓';
+      case 'in progress':
+      case 'ongoing':
+        return '⟳';
+      case 'research phase':
+        return '🔬';
+      case 'prototype':
+        return '⚡';
+      default:
+        return '●';
+    }
+  };
+
+  // Filter projects based on selected status
+  const filterProjects = (status: string) => {
+    setSelectedStatus(status);
+    if (status === 'all') {
+      setFilteredProjects(projects);
+    } else {
+      const filtered = projects.filter(project => 
+        project.CurrentStatus?.toLowerCase().includes(status.toLowerCase())
+      );
+      setFilteredProjects(filtered);
+    }
+  };
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        setIsLoading(true);
+        setError(null);
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/projects?populate=Image`
+        );
+        if (!response.ok) {
+          throw new Error('Failed to fetch projects');
+        }
+        const data = await response.json();
+        setProjects(data.data || []);
+        setFilteredProjects(data.data || []); // Initialize filtered projects
+      } catch (err) {
+        console.error("Error fetching projects:", err);
+        setError(err instanceof Error ? err.message : 'An error occurred');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchProjects();
+  }, []);
+
+  const openModal = (project: any) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+    document.body.style.overflow = 'unset';
+  };
+
+  // Handle escape key to close modal
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isModalOpen) {
+        closeModal();
+      }
+    };
+
+    if (isModalOpen) {
+      document.addEventListener('keydown', handleEscape);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [isModalOpen]);
 
   return (
     <>
@@ -73,91 +150,289 @@ const ProjectsSection = () => {
             </div>
           </div>
 
-          {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project) => (
-              <div
-                key={project.id}
-                className="group relative"
-                onMouseEnter={() => setHoveredProject(project.id)}
-                onMouseLeave={() => setHoveredProject(null)}
-              >
-                {/* Project Card */}
-                <div className={`relative h-96 glass backdrop-blur-lg rounded-2xl border border-white/10 overflow-hidden transition-all duration-500 transform ${hoveredProject === project.id
-                  ? 'scale-105 shadow-2xl shadow-blue-500/20'
-                  : 'hover:scale-102'
-                  }`}>
-
-                  {/* Background Gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
-
-                  {/* Project Image Placeholder */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 opacity-50" />
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1),transparent_70%)]" />
-
-                  {/* Content */}
-                  <div className="relative z-10 p-6 h-full flex flex-col">
-                    {/* Status Badge */}
-                    <div className="flex justify-between items-start mb-4">
-                      <span className={`px-3 py-1 rounded-full text-xs font-exo2 font-medium border ${getStatusColor(project.status)}`}>
-                        {project.status}
+          {/* Status Filter */}
+          {!isLoading && !error && projects.length > 0 && (
+            <div className="mb-12">
+              <div className="flex flex-wrap justify-center gap-3">
+                {statusOptions.map((status) => (
+                  <button
+                    key={status.value}
+                    onClick={() => filterProjects(status.value)}
+                    className={`group flex items-center space-x-2 px-6 py-3 rounded-2xl font-exo2 font-semibold text-sm transition-all duration-300 transform hover:scale-105 ${
+                      selectedStatus === status.value
+                        ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/25'
+                        : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50 border border-white/20 hover:border-white/40'
+                    }`}
+                  >
+                    <span className="text-lg">{status.icon}</span>
+                    <span>{status.label}</span>
+                    {selectedStatus === status.value && (
+                      <span className="ml-2 text-xs bg-white/20 px-2 py-1 rounded-full">
+                        {filteredProjects.length}
                       </span>
-                      {/* <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" /> */}
-                    </div>
+                    )}
+                  </button>
+                ))}
+              </div>
+              
+              {/* Filter Results Summary */}
+              <div className="text-center mt-6">
+                <p className="text-gray-400 font-exo2">
+                  {selectedStatus === 'all' 
+                    ? `Showing all ${projects.length} projects`
+                    : `Showing ${filteredProjects.length} ${selectedStatus} project${filteredProjects.length !== 1 ? 's' : ''}`
+                  }
+                </p>
+              </div>
+            </div>
+          )}
 
-                    {/* Project Title */}
-                    <h3 className="text-xl font-orbitron font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
-                      {project.title}
-                    </h3>
+          {/* Projects Content */}
+          {isLoading ? (
+            <ProjectsGridSkeleton />
+          ) : error ? (
+            <div className="text-center py-16">
+              <div className="w-24 h-24 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-4xl">⚠️</span>
+              </div>
+              <h3 className="text-2xl font-orbitron text-white mb-4">Oops! Something went wrong</h3>
+              <p className="text-gray-400 font-exo2 mb-6 max-w-md mx-auto">
+                {error}
+              </p>
+              <button
+                onClick={() => window.location.reload()}
+                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-exo2 font-semibold rounded-xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300"
+              >
+                Try Again
+              </button>
+            </div>
+          ) : filteredProjects.length === 0 ? (
+            <div className="text-center py-16">
+              <div className="w-24 h-24 bg-gray-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-4xl">🔍</span>
+              </div>
+              <h3 className="text-2xl font-orbitron text-white mb-4">
+                {selectedStatus === 'all' ? 'No Projects Found' : `No ${selectedStatus} Projects`}
+              </h3>
+              <p className="text-gray-400 font-exo2 max-w-md mx-auto">
+                {selectedStatus === 'all' 
+                  ? "We're currently working on some amazing projects. Check back soon!"
+                  : `No projects found with "${selectedStatus}" status. Try selecting a different filter.`
+                }
+              </p>
+              {selectedStatus !== 'all' && (
+                <button
+                  onClick={() => filterProjects('all')}
+                  className="mt-6 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-exo2 font-semibold rounded-xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300"
+                >
+                  View All Projects
+                </button>
+              )}
+            </div>
+          ) : (
+            <>
+              {/* Enhanced Projects Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                {filteredProjects.map((project, index) => {
+                  const imgUrl = project.Image?.[0]?.url || '/placeholder.jpg';
+                  return (
+                    <div
+                      key={project.id}
+                      className="group relative animate-fade-in"
+                      style={{ animationDelay: `${index * 100}ms` }}
+                      onMouseEnter={() => setHoveredProject(project.id)}
+                      onMouseLeave={() => setHoveredProject(null)}
+                    >
+                      {/* Enhanced Project Card */}
+                      <div
+                        className={`relative h-[420px] glass backdrop-blur-xl rounded-3xl border border-white/20 overflow-hidden transition-all duration-700 transform ${
+                          hoveredProject === project.id
+                            ? 'scale-105 shadow-2xl shadow-blue-500/30 -translate-y-2'
+                            : 'hover:scale-102 hover:-translate-y-1'
+                        }`}
+                      >
+                        {/* Enhanced Background Image */}
+                        <div className="absolute inset-0">
+                          <img
+                            src={imgUrl}
+                            alt={project.Title}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-800/70 to-gray-900/80" />
+                        </div>
 
-                    {/* Project Description */}
-                    <p className="text-gray-300 font-exo2 text-sm leading-relaxed mb-4 flex-grow">
-                      {project.description}
-                    </p>
+                        {/* Enhanced Overlay with Pattern */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-800/60 to-gray-900/60" />
+                        <div className="absolute inset-0 opacity-20">
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(59,130,246,0.3),transparent_50%)]" />
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(147,51,234,0.3),transparent_50%)]" />
+                        </div>
 
-                    {/* Technologies */}
-                    <div className="space-y-3">
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs font-exo2 rounded-lg border border-blue-500/30"
+                        {/* Enhanced Content */}
+                        <div className="relative z-10 p-8 h-auto flex flex-col">
+                          {/* Enhanced Status Badge */}
+                          <div className="flex justify-between items-start mb-6">
+                            <div className="flex items-center space-x-2">
+                              <span
+                                className={`px-4 py-2 rounded-full text-sm font-exo2 font-semibold border-2 backdrop-blur-sm ${getStatusColor(
+                                  project.CurrentStatus
+                                )}`}
+                              >
+                                <span className="mr-2">{getStatusIcon(project.CurrentStatus)}</span>
+                                {project.CurrentStatus}
+                              </span>
+                            </div>
+                            <div className="w-8 h-8 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full flex items-center justify-center border border-white/20">
+                              <span className="text-white/60 text-sm">#{index + 1}</span>
+                            </div>
+                          </div>
+
+                          {/* Enhanced Project Title */}
+                          <h3 className="text-2xl font-orbitron font-bold text-white mb-4 group-hover:text-blue-400 transition-all duration-300 leading-tight">
+                            {project.Title}
+                          </h3>
+
+                          {/* Enhanced Project Description */}
+                          <p className="text-gray-300 font-exo2 text-base mb-6 flex-grow line-clamp-6">
+                            {project.Description}
+                          </p>
+
+                          {/* Enhanced Action Button */}
+                          <button
+                            onClick={() => openModal(project)}
+                            className="group/btn w-full px-6 py-3 bg-gradient-to-r from-blue-600/90 to-purple-600/90 text-white font-exo2 font-semibold text-sm rounded-xl transition-all duration-300 hover:from-blue-500 hover:to-purple-500 hover:shadow-lg hover:shadow-blue-500/25 transform hover:scale-105 relative overflow-hidden"
                           >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
+                            <span className="relative z-10 flex items-center justify-center">
+                              <span className="mr-2">View Details</span>
+                              <span className="transform group-hover/btn:translate-x-1 transition-transform duration-300">→</span>
+                            </span>
+                            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
+                          </button>
+                        </div>
 
-                      {/* Action Button */}
-                      <button className="w-full px-4 py-2 bg-gradient-to-r from-blue-600/80 to-purple-600/80 text-white font-exo2 font-medium text-sm rounded-lg transition-all duration-300 hover:from-blue-500 hover:to-purple-500 hover:shadow-lg hover:shadow-blue-500/25 group-hover:scale-105">
-                        View Details
-                      </button>
+                        {/* Enhanced Hover Effects */}
+                        {hoveredProject === project.id && (
+                          <>
+                            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-xl rounded-3xl -z-10 animate-pulse-glow" />
+                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-purple-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          )}
+        </div>
+      </section>
+
+      {/* Enhanced Project Modal */}
+      {isModalOpen && selectedProject && (
+        <div 
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in h-screen"
+          onClick={closeModal}
+        >
+          <div 
+            className="bg-gray-900/95 backdrop-blur-xl max-w-4xl w-full rounded-3xl shadow-2xl overflow-y-scroll no-scrollbar relative border border-white/20 animate-slide-in-left h-[80vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Enhanced Close Button */}
+            <button
+              onClick={closeModal}
+              className="absolute top-6 right-6 w-10 h-10 bg-gray-800/50 hover:bg-gray-700/50 text-gray-400 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 z-20 backdrop-blur-sm border border-white/10"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Enhanced Modal Content */}
+            <div className="p-8">
+              {/* Enhanced Header */}
+              <div className="mb-8">
+                <div className="flex items-center space-x-4 mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center">
+                    <span className="text-2xl">🚀</span>
+                  </div>
+                  <div>
+                    <h2 className="text-3xl font-orbitron text-white mb-2">
+                      {selectedProject.Title}
+                    </h2>
+                    <div className="flex items-center space-x-3">
+                      <span
+                        className={`px-4 py-2 rounded-full text-sm font-exo2 font-semibold border-2 ${getStatusColor(
+                          selectedProject.CurrentStatus
+                        )}`}
+                      >
+                        <span className="mr-2">{getStatusIcon(selectedProject.CurrentStatus)}</span>
+                        {selectedProject.CurrentStatus}
+                      </span>
                     </div>
                   </div>
                 </div>
-
-                {hoveredProject === project.id && (
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20 blur-xl rounded-2xl -z-10 animate-pulse`} />
-                )}
               </div>
-            ))}
-          </div>
 
-          {/* View All Projects Button */}
-          <div className="text-center mt-12">
-            <Link href="/projects">
-              <button
-                className="relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-exo2 font-semibold text-lg transition-all duration-300 hover:from-blue-500 hover:to-purple-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]"
-                style={{
-                  clipPath: "polygon(0px 0px, 90% 0px, 100% 25%, 100% 100%, 10% 100%, 0px 75%)"
-                }}
-              >
-                <span className="relative z-10">View All Projects</span>
-              </button>
-            </Link>
+              {/* Enhanced Image Gallery */}
+              {selectedProject.Image?.length > 0 && (
+                <div className="mb-8">
+                  <h3 className="text-xl font-orbitron text-white mb-4 flex items-center">
+                    <span className="mr-2">📸</span>
+                    Project Gallery
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {selectedProject.Image.map((img: any, index: number) => (
+                      <div key={img.id} className="group relative overflow-hidden rounded-2xl border border-white/20">
+                        <img
+                          src={img.url}
+                          alt={`${selectedProject.Title} - Image ${index + 1}`}
+                          className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute bottom-3 left-3 text-white/80 text-sm font-exo2">
+                          Image {index + 1}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Enhanced Description */}
+              <div className="mb-8">
+                <h3 className="text-xl font-orbitron text-white mb-4 flex items-center">
+                  <span className="mr-2">📝</span>
+                  Project Description
+                </h3>
+                <div className="bg-gray-800/30 rounded-2xl p-6 border border-white/10">
+                  <p className="text-gray-300 font-exo2 text-base leading-relaxed whitespace-pre-line">
+                    {selectedProject.Description}
+                  </p>
+                </div>
+              </div>
+
+              {/* Enhanced Project Links */}
+              {selectedProject.Links && (
+                <div className="flex justify-center">
+                  <a
+                    href={selectedProject.Links.replace(/"/g, '')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-exo2 font-semibold text-lg rounded-2xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]"
+                  >
+                    <span className="mr-3">🔗</span>
+                    <span>Visit Project</span>
+                    <span className="ml-3 transform group-hover:translate-x-1 transition-transform duration-300">→</span>
+                  </a>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </section>
+      )}
+
       <Footer />
     </>
   );
