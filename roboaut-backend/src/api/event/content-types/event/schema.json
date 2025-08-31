@@ -39,6 +39,16 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "EventStatus": {
+      "type": "enumeration",
+      "required": true,
+      "default": "Open",
+      "enum": [
+        "Open",
+        "Closed",
+        "Completed"
+      ]
     }
   }
 }
