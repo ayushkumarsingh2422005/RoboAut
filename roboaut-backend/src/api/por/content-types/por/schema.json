@@ -46,6 +46,14 @@
     },
     "Github": {
       "type": "string"
+    },
+    "Description": {
+      "type": "string",
+      "required": true
+    },
+    "Rank": {
+      "type": "integer",
+      "required": true
     }
   }
 }
