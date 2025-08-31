@@ -354,7 +354,7 @@ const TeamSection = () => {
                     <div className="text-center">
                       <div className="text-4xl mb-4">{dept.icon}</div>
                       <h3 className="text-lg font-orbitron font-bold text-white mb-2">{dept.name}</h3>
-                      <div className="text-3xl font-orbitron font-bold text-purple-400 mb-2">{dept.count}</div>
+                      {/* <div className="text-3xl font-orbitron font-bold text-purple-400 mb-2">{dept.count}</div> */}
                       <p className="text-gray-300 font-exo2 text-sm leading-relaxed">{dept.description}</p>
                     </div>
                   </div>

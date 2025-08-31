@@ -4,6 +4,7 @@ import Spline from "@splinetool/react-spline";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Image from "next/image";
+import Link from "next/link";
 
 
 
@@ -121,7 +122,7 @@ export default function Home() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-slide-in-left" style={{ animationDelay: '0.8s' }}>
                 {/* Primary CTA Button - Robotic Style */}
-                <button className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-exo2 font-semibold text-lg transition-all duration-300 hover:from-blue-500 hover:to-purple-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] animate-glow"
+                <Link href="/achievements" className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-exo2 font-semibold text-lg transition-all duration-300 hover:from-blue-500 hover:to-purple-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] animate-glow"
                   style={{
                     clipPath:
                       "polygon(0px 0px, 90% 0px, 100% 25%, 100% 100%, 10% 100%, 0px 75%)"
@@ -133,17 +134,17 @@ export default function Home() {
                   >
                     Our Achivements
                   </span>
-                </button>
+                </Link>
 
                 {/* Secondary Button */}
-                <button className="px-8 py-4 border-2 border-transparent bg-blue-400/20 backdrop-blur-md text-blue-400 font-exo2 font-semibold text-lg transition-all duration-300 hover:bg-blue-400 hover:text-black hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:scale-105"
+                <Link href="/team" className="px-8 py-4 border-2 border-transparent bg-blue-400/20 backdrop-blur-md text-blue-400 font-exo2 font-semibold text-lg transition-all duration-300 hover:bg-blue-400 hover:text-black hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:scale-105"
                   style={{
                     clipPath:
                       "polygon(0px 0px, 90% 0px, 100% 25%, 100% 100%, 10% 100%, 0px 75%)"
                   }}
                 >
                   Our Team
-                </button>
+                </Link>
               </div>
 
               {/* Stats */}
