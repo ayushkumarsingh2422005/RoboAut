@@ -86,19 +86,19 @@ export default function ReachUsPage() {
     {
       icon: '📧',
       title: 'Email Us',
-      details: ['roboaut@nitjsr.ac.in', 'president@roboaut.nitjsr.ac.in', 'info@roboaut.nitjsr.ac.in'],
+      details: ['roboaut@nitjsr.ac.in', 's.supreet1974@gmail.com', 'prashantsharmanitjsr@gmail.com'],
       color: 'purple'
     },
     {
       icon: '📞',
       title: 'Call Us',
-      details: ['+91 9876543210', '+91 8765432109', 'Mon-Fri 9:00 AM - 6:00 PM'],
+      details: ['+91 9711944706', '+91 6200469967', 'Mon-Fri 9:00 AM - 6:00 PM'],
       color: 'green'
     },
     {
       icon: '🌐',
       title: 'Follow Us',
-      details: ['@teamroboaut', 'linkedin.com/in/team-roboaut-124064320', 'github.com/roboaut-nitjsr'],
+      details: ['@teamroboaut', 'linkedin.com/in/team-roboaut-124064320/', 'github.com/digicraft-one'],
       color: 'cyan'
     }
   ];

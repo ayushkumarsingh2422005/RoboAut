@@ -453,6 +453,9 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     Date: Schema.Attribute.Date & Schema.Attribute.Required;
     Description: Schema.Attribute.Text & Schema.Attribute.Required;
+    EventStatus: Schema.Attribute.Enumeration<['Open', 'Closed', 'Completed']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Open'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'> &
       Schema.Attribute.Private;
