@@ -390,7 +390,7 @@ export default function Home() {
                     Dr. Vijay Kumar Dalla
                   </h3>
                   <p className="text-purple-400 font-exo2 font-medium">
-                    Founder, Faculty Incharge, RoboAut Club
+                    Founder & Faculty In-Charge, RoboAut Club
                   </p>
                   <p className="text-gray-400 font-exo2 text-sm">
                     Assistant Professor, Department of Mechanical Engineering, NIT Jamshedpur
@@ -417,7 +417,7 @@ export default function Home() {
                       target="_blank"
                       className="text-cyan-400 font-exo2 text-sm hover:underline"
                     >
-                      <span className="text-cyan-400 font-exo2 text-sm hover:underline">College Profile</span>
+                      <span className="text-cyan-400 font-exo2 text-sm hover:underline">Institue Profile</span>
 
                     </a>
                     <a
