@@ -451,7 +451,7 @@ export default function Home() {
                       </svg>
                     </a>
                     <a
-                      href="https://www.linkedin.com/in/dr-vijay-kumar-dalla-assistan"
+                      href="https://www.linkedin.com/in/dr-vijay-kumar-dalla-assistant-professor-01495772/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-400 hover:text-blue-300 transition-colors"
